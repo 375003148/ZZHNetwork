@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ZZHNetwork'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ZZHNetwork.'
+  s.summary          = 'SDK for convenient network'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                        '这是一个方便的网络请求SDK'
+                        '基于AFNetwork进行了二次封装'
                        DESC
 
   s.homepage         = 'https://github.com/375003148/ZZHNetwork'
@@ -28,15 +29,20 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/375003148/ZZHNetwork.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'ZZHNetwork/Classes/**/*'
+  # 使用到的工程文件
+  s.source_files = 'ZZHNetwork/Classes/**/*.{h,m}'
   
+  # 使用到的资源文件
   # s.resource_bundles = {
   #   'ZZHNetwork' => ['ZZHNetwork/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # 公开的头文件
+  s.public_header_files = 'ZZHNetwork/Classes/Header/**/*.h'
+  # 使用的系统库
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # 使用三方库
+  s.dependency 'AFNetworking', '~> 3.0'
 end
