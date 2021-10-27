@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZHGetRequest : ZZHNetworkRequest
 
+- (id)initWithUsername:(NSString *)username password:(NSString *)password;
+
 @end
 
 NS_ASSUME_NONNULL_END

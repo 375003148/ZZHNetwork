@@ -13,7 +13,6 @@
 #import "ZZHNetwork.h"
 #import "ZZHNetworkDefine.h"
 #import "ZZHNetworkRequest.h"
-#import "ZZHNetworkSerialRequest.h"
 
 FOUNDATION_EXPORT double ZZHNetworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZZHNetworkVersionString[];

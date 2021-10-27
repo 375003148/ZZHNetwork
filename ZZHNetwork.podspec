@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZZHNetwork'
-  s.version          = '0.1.0'
+  s.version          = '1.0.1'
   s.summary          = 'SDK for convenient network'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   # 使用到的工程文件
-  s.source_files = 'ZZHNetwork/Classes/**/*.{h,m}'
+  s.source_files = 'ZZHNetwork/**/*.{h,m}'
   
   # 使用到的资源文件
   # s.resource_bundles = {
@@ -40,9 +40,9 @@ Pod::Spec.new do |s|
   # }
 
   # 公开的头文件
-  s.public_header_files = 'ZZHNetwork/Classes/Header/**/*.h'
+  s.public_header_files = 'ZZHNetwork/Header/**/*.h'
   # 使用的系统库
   # s.frameworks = 'UIKit', 'MapKit'
   # 使用三方库
-  s.dependency 'AFNetworking', '~> 3.0'
+  s.dependency 'AFNetworking', '~> 4.0'
 end

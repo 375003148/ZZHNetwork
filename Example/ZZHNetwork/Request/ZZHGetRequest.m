@@ -8,25 +8,44 @@
 
 #import "ZZHGetRequest.h"
 
-@implementation ZZHGetRequest
+@implementation ZZHGetRequest {
+    NSString *_username;
+    NSString *_password;
+}
+
+- (id)initWithUsername:(NSString *)username password:(NSString *)password {
+    self = [super init];
+    if (self) {
+        _username = username;
+        _password = password;
+    }
+    return self;
+}
 
 #pragma mark - Override
 
 //请求类型
 - (ZZHNetworkRequestType)requestType {
-    return ZZHNetworkRequestTypeGet;
+    return ZZHNetworkRequestTypePost;
 }
 //请求完整的URL
 - (NSString *)requestURLString {
-    return @"https://www.baidu.com";
+    return @"/iphone/register";
 }
 
-- (ZZHNetworkRequestSerializerType)requestSerializerType {
-    return ZZHNetworkRequestSerializerTypeHTTP;
+- (NSDictionary *)requestParameters{
+    return @{
+        @"username": _username,
+        @"password": _password
+    };
 }
 
-- (ZZHNetworkResponseSerializerType)responseSerializerType {
-    return ZZHNetworkResponseSerializerTypeHTTP;
-}
+//- (ZZHNetworkRequestSerializerType)requestSerializerType {
+//    return ZZHNetworkRequestSerializerTypeHTTP;
+//}
+//
+//- (ZZHNetworkResponseSerializerType)responseSerializerType {
+//    return ZZHNetworkResponseSerializerTypeHTTP;
+//}
 
 @end

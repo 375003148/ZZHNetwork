@@ -1,27 +1,27 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - ZZHNetwork (0.1.0):
-    - AFNetworking (~> 3.0)
+  - ZZHNetwork (1.0.0):
+    - AFNetworking (~> 4.0)
 
 DEPENDENCIES:
   - ZZHNetwork (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - AFNetworking
 
 EXTERNAL SOURCES:
@@ -29,9 +29,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ZZHNetwork: dc4f924d37237ed7f62dd1ac85f661ffe78c4cba
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  ZZHNetwork: 815423bb55709c7e7b012c35321a2ad512c5295d
 
-PODFILE CHECKSUM: 7c7f52018177ba98e9d39b6cd904443bca069038
+PODFILE CHECKSUM: 2d39391ac201be28a79f82a38bbbf110c839a82b
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.10.1

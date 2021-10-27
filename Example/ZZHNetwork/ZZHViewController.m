@@ -82,14 +82,15 @@
 }
 
 - (void)requestForGet {
-    ZZHGetRequest *request = [[ZZHGetRequest alloc] init];
-    [request startWithCompleteHandlerOnSuccess:^(id  _Nullable responseObject) {
-        //
-        NSLog(@"成功: %@", responseObject);
-    } failHandler:^(NSError * _Nullable error) {
-        //
-        NSLog(@"失败: %@", error);
+    ZZHGetRequest *request = [[ZZHGetRequest alloc] initWithUsername:@"133" password:@"1323"];
+    [request startOnSuccess:^(id  _Nullable responseObject) {
+        
+    } onFailure:^(NSError * _Nullable error) {
+        
+    } onCancel:^{
+    
     }];
+    
 }
 
 - (void)requestForPost {

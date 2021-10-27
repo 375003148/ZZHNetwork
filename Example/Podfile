@@ -12,7 +12,3 @@ target 'ZZHNetwork_Example' do
   end
 end
 
-#
-#target 'ZZHNetwork' do
-#  pod 'AFNetworking', '~> 3.0'
-#end
