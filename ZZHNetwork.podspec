@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZZHNetwork'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'SDK for convenient network'
 
 # This description is used to generate tags and improve search results.
@@ -26,8 +26,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '375003148' => '375003148@qq.com' }
-  # s.source           = { :git => 'https://github.com/375003148/ZZHNetwork.git', :tag => s.version.to_s }
-  s.source           = { :git => 'git@github.com:375003148/ZZHNetwork.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/375003148/ZZHNetwork.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
