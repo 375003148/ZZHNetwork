@@ -84,13 +84,13 @@
 - (void)requestForGet {
     ZZHGetRequest *request = [[ZZHGetRequest alloc] initWithUsername:@"133" password:@"1323"];
     [request startOnSuccess:^(id  _Nullable responseObject) {
-        
+        NSLog(@"成功");
     } onFailure:^(NSError * _Nullable error) {
-        
+        NSLog(@"失败");
+        NSLog(@"%d", request.isExecuting);
     } onCancel:^{
-    
+        NSLog(@"取消");
     }];
-    
 }
 
 - (void)requestForPost {

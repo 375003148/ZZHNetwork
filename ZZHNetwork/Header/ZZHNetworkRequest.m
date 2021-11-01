@@ -9,8 +9,19 @@
 #import "ZZHNetworkRequest.h"
 #import "ZZHNetworkAgent.h"
 #import "AFNetworking.h"
+#import "ZZHNetworkRequest+Private.h"
 
 @interface ZZHNetworkRequest ()
+
+/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkProgress progressBlock;
+/// 网络请求成功的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkSuccessHandler successHandler;
+/// 网络请求失败的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkFailHandler failHandler;
+/// 网络请求取消的block.  取消的时候马上在主线程执行
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkCancelHandler cancelHandler;
+
 
 @end
 
@@ -56,6 +67,12 @@
         [self cancel];
     }
     
+    
+    //开启一个网络请求
+    self.progressBlock = progress;
+    self.successHandler = successHandler;
+    self.failHandler = failHandler;
+    self.cancelHandler = cancelHandler;
     [[ZZHNetworkAgent sharedAgent] startRequest:self];
 }
 
@@ -65,6 +82,14 @@
 
 - (BOOL)isExecuting {
     return self.sessionTask != nil;
+}
+
+// 删除所有回调 block
+- (void)clearAllBlocks {
+    self.progressBlock = nil;
+    self.successHandler = nil;
+    self.failHandler = nil;
+    self.cancelHandler = nil;
 }
 
 @end

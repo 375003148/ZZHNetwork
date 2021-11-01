@@ -11,7 +11,8 @@
 #import <pthread/pthread.h>
 #import "ZZHNetworkUtil.h"
 #import "ZZHNetworkDefine.h"
-#import "ZZHNetworkPrivateDefine.h"
+#import "ZZHNetworkRequest+Private.h"
+#import "ZZHNetworkLogDefine.h"
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)
@@ -143,11 +144,11 @@ typedef enum : NSUInteger {
     } else {
         [request.sessionTask cancel];
     }
-    //删除记录
-    [self clearNetworkRequest:request];
-    
+
     // 处理回调
     [self handleCallBack:request responseObject:nil error:nil responseType:ZZHNetworkResponseTypeCancel];
+    // 清除 request 记录
+    [self clearNetworkRequest:request];
 }
 
 - (void)cancelAllRequests {
@@ -227,7 +228,7 @@ typedef enum : NSUInteger {
     }
 
     //主线程进行回调 和 清除数据
-    zzh_dispatch_main_async_safe(^{
+    dispatch_main_async_safe(^{
         // 如果已经取消了, 直接return
         if (!request.sessionTask) {
             return;
@@ -528,6 +529,10 @@ typedef enum : NSUInteger {
 /// 结束网络请求必须调用此方法, 清除掉 sessionTask 和 记录字典中的 request
 - (void)clearNetworkRequest:(ZZHNetworkRequest *)request {
     request.sessionTask = nil;
+    
+    // 删除所有的回调block
+    [request clearAllBlocks];
+    
     Lock();
     [self.requestRecordDic removeObjectForKey:@(request.sessionTask.taskIdentifier)];
     Unlock();

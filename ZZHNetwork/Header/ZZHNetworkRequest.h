@@ -16,10 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZZHNetworkRequest : NSObject
 
-#pragma mark - 
-
-///  网络任务正在执行
-@property (nonatomic, readonly, getter=isExecuting) BOOL executing;
 
 #pragma mark - 网络设置(子类继承进行设置)
 
@@ -37,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 请求参数
 @property (nonatomic, copy, nullable) NSDictionary *requestParameters;
-
 
 
 /// 请求优先级, 默认 ZZHRequestPriorityDefault
@@ -78,7 +73,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// 增添请求头参数
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> *requestHeaderFieldValueDictionary;
 
+#pragma mark - 可读信息
 
+///  网络任务正在执行
+@property (nonatomic, readonly, getter=isExecuting) BOOL executing;
+/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkProgress progressBlock;
+/// 网络请求成功的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkSuccessHandler successHandler;
+/// 网络请求失败的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkFailHandler failHandler;
+/// 网络请求取消的block.  取消的时候马上在主线程执行
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkCancelHandler cancelHandler;
 
 #pragma mark - public Action
 /// 开始网络请求.
@@ -105,25 +111,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @discussion 取消会马上执行取消回调, 并不在成功或失败的回调范围.
 - (void)cancel;
 
-@end
-
-
-/// 内部使用的属性, 外部不要操作
-@interface ZZHNetworkRequest ()
-
-#pragma mark - 网络回调
-/// 网络请求成功的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable) ZZHNetworkSuccessHandler successHandler;
-/// 网络请求失败的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable) ZZHNetworkFailHandler failHandler;
-/// 网络请求取消的block.  取消的时候马上在主线程执行
-@property (nonatomic, copy, nullable) ZZHNetworkCancelHandler cancelHandler;
-/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
-@property (nonatomic, copy, nullable) ZZHNetworkProgress progressBlock;
-
-#pragma mark - ZZHNetworkAgent 内部使用, 别的类里面只可以读取
-/// 记录当前sessionTask, 如果为nil则表示没有正在执行的网络请求
-@property (nonatomic, strong, nullable) NSURLSessionTask *sessionTask;
+// 删除所有回调 block, 此方法供内部使用, 外部不要调用
+- (void)clearAllBlocks;
 
 @end
 

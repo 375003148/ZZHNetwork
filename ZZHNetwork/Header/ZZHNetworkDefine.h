@@ -102,8 +102,8 @@ NS_ASSUME_NONNULL_END
 #pragma mark - 实用的宏定义
 
 /// 确保在主线程执行block
-#ifndef zzh_dispatch_main_async_safe
-#define zzh_dispatch_main_async_safe(block)\
+#ifndef dispatch_main_async_safe
+#define dispatch_main_async_safe(block)\
     if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {\
         block();\
     } else {\
@@ -112,37 +112,4 @@ NS_ASSUME_NONNULL_END
 #endif
 
 
-/// __weak的宏定义.  使用时  @ZZHWeakify(self) 即可使用 weak_self 了
-#ifndef ZZHWeakify
-    #if DEBUG
-        #if __has_feature(objc_arc)
-            #define ZZHWeakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
-        #else
-            #define ZZHWeakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
-        #endif
-    #else
-        #if __has_feature(objc_arc)
-            #define ZZHWeakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
-        #else
-            #define ZZHWeakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
-        #endif
-    #endif
-#endif
 
-
-/// __strong的宏定义
-#ifndef ZZHStrongify
-    #if DEBUG
-        #if __has_feature(objc_arc)
-            #define ZZHStrongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
-        #else
-            #define ZZHStrongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
-        #endif
-    #else
-        #if __has_feature(objc_arc)
-            #define ZZHStrongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
-        #else
-            #define ZZHStrongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
-        #endif
-    #endif
-#endif
