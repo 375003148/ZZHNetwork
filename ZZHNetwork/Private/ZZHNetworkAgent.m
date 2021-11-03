@@ -77,17 +77,12 @@ typedef enum : NSUInteger {
     
     ZZHNetworkLog(@"");
     ZZHNetworkLog(@"========== /网络请求开始/ ==========");
-    ZZHNetworkLog(@"//网络URL// -> %@", [self buildRequestUrl:request]);
-    ZZHNetworkLog(@"//网络参数// -> %@", request.requestParameters);
+    ZZHNetworkLog(@"//网络URL// -> %@", [self _getRequestUrl:request]);
+    ZZHNetworkLog(@"//网络参数// -> %@", [self _getFinalParameters:request]);
    
     // 拦截器
     if ([request.requestInterceptor respondsToSelector:@selector(requestWillStart)]) {
         [request.requestInterceptor requestWillStart];
-    }
-    
-    // 参数预处理
-    if (request.parameterPreprocess) {
-        request.requestParameters = request.parameterPreprocess(request.requestParameters);
     }
     
     // 创建一个新的请求任务
@@ -209,8 +204,6 @@ typedef enum : NSUInteger {
     }
 
     if (type == ZZHNetworkResponseTypeFailure) {
-        // 失败
-        
         // 下载失败时将 resume data 存放在 resume path 下
         if (request.resumableDownloadPath) {
             NSURL *tmpDownloadPath = [self resumeDataPathForDownloadPath:request.resumableDownloadPath];
@@ -263,8 +256,8 @@ typedef enum : NSUInteger {
     }
     
     // 预处理返回结果
-    if (request.resultPreprocess && type != ZZHNetworkResponseTypeCancel) {
-        id result = request.resultPreprocess(responseObject, error);
+    if ([request.preprocessor respondsToSelector:@selector(preproccessResponseObject:error:)] && type != ZZHNetworkResponseTypeCancel) {
+        id result = [request.preprocessor preproccessResponseObject:responseObject error:error];
         if ([result isKindOfClass:[NSNumber class]]) {
             // 结果通知上层处理了, 直接 return
             ZZHNetworkLog(@"");
@@ -387,11 +380,13 @@ typedef enum : NSUInteger {
     //构建request
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSMutableURLRequest *URLRequest = nil;
-    NSString *finalURL = [self buildRequestUrl:request];
+    NSString *finalURL = [self _getRequestUrl:request];
+    NSDictionary *finalParameters = [self _getFinalParameters:request];
+    
     if (request.constructingBlock) {
-        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:request.requestParameters constructingBodyWithBlock:request.constructingBlock error:error];
+        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:finalParameters constructingBodyWithBlock:request.constructingBlock error:error];
     } else {
-        URLRequest = [requestSerializer requestWithMethod:methodName URLString:finalURL parameters:request.requestParameters error:error];
+        URLRequest = [requestSerializer requestWithMethod:methodName URLString:finalURL parameters:finalParameters error:error];
     }
 
     //构架dataTask
@@ -407,8 +402,9 @@ typedef enum : NSUInteger {
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSString *downloadPath = request.resumableDownloadPath;
     
-    NSString *finalURL = [self buildRequestUrl:request];
-    NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:request.requestParameters error:error];
+    NSString *finalURL = [self _getRequestUrl:request];
+    NSDictionary *finalParameters = [self _getFinalParameters:request];
+    NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:finalParameters error:error];
 
     /// 处理下载路径格式, downloadTargetPath 为最终的下载地址
     // 1.判断路径下是否是文件夹
@@ -567,7 +563,8 @@ typedef enum : NSUInteger {
     Unlock();
 }
 
-- (NSString *)buildRequestUrl:(ZZHNetworkRequest *)request {
+// 获取最终URL
+- (NSString *)_getRequestUrl:(ZZHNetworkRequest *)request {
     NSParameterAssert(request != nil);
 
     NSURL *baseURL = nil;
@@ -579,6 +576,16 @@ typedef enum : NSUInteger {
         baseURL = [baseURL URLByAppendingPathComponent:@""];
     }
     return [[NSURL URLWithString:[request requestURLString] relativeToURL:baseURL] absoluteString];
+}
+
+// 获取最终参数
+- (NSDictionary *)_getFinalParameters:(ZZHNetworkRequest *)request {
+    // 参数预处理
+    NSDictionary *finalParameters = request.requestParameters;
+    if ([request.preprocessor respondsToSelector:@selector(preproccessParameter:)]) {
+        finalParameters = [request.preprocessor preproccessParameter:request.requestParameters];
+    }
+    return finalParameters;
 }
 
 @end

@@ -48,11 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 请求 BaseURL  (例如：http://186.134.321.34)
 @property (nonatomic, copy, nullable) NSString *baseURLString;
 
-/// 预处理参数
-@property (nonatomic, copy, nullable) ZZHNetworkPreproccessParameter parameterPreprocess;
-
-/// 预处理返回数据.
-@property (nonatomic, copy, nullable) ZZHNetworkResultPreproccess resultPreprocess;
+/// 预处理器
+@property (nonatomic, copy, nullable) id<ZZHNetworkPreproccess>preprocessor;
 
 /// 拦截器
 @property (nonatomic, strong, nullable) id<ZZHNetworkInterceptor> requestInterceptor;

@@ -60,11 +60,6 @@ typedef void (^ZZHNetworkProgress)(NSProgress * _Nullable progress);
 @protocol AFMultipartFormData;
 typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
-/// 预处理请求参数
-typedef NSDictionary *_Nullable(^ZZHNetworkPreproccessParameter)(NSDictionary *_Nullable parameter);
-/// 预处理返回结果.  返回 @(0) 表示结果上报到上层进行处理,  此时不走成功和失败的block 和代理,  以及拦截器的 requestAfterCallBack 方法
-typedef id _Nullable(^ZZHNetworkResultPreproccess)(id _Nullable responseObject, NSError *_Nullable error);
-
 #pragma mark - 网络请求回调代理
 
 @protocol ZZHNetworkRequestDeledate <NSObject>
@@ -79,6 +74,22 @@ typedef id _Nullable(^ZZHNetworkResultPreproccess)(id _Nullable responseObject, 
 
 /// 网络请求取消的回调
 - (void)requestDidCancelled;
+
+@end
+
+#pragma mark - 预处理代理
+@protocol ZZHNetworkPreproccess <NSObject>
+
+@optional
+
+/// 预处理参数
+/// @param parameters 原始的参数字典
+- (nullable NSDictionary *)preproccessParameter:(nullable NSDictionary *)parameters;
+
+
+/// 预处理请求结果 (注意此方法是在子线程)
+/// @return 返回最终的数据格式. 如果返回nil, 表示事件已经分发, 不执行回调. 如果为NSError则执行失败回调, 其它情况执行成功回调
+- (nullable id)preproccessResponseObject:(nullable id)responseObject error:(nullable NSError *)error;
 
 @end
 
