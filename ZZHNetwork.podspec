@@ -31,18 +31,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   # 使用到的工程文件
-  s.source_files = 'ZZHNetwork/**/*.{h,m}'
+  s.source_files = 'ZZHNetwork/Header/*.{h,m}', 'ZZHNetwork/Private/*.{h,m}'
   # 公开的头文件
-  s.public_header_files = 'ZZHNetwork/Header/**/*.h'
+  s.public_header_files = 'ZZHNetwork/Header/*.h'
   
-  #二级目录
-  s.subspec 'Header' do |ss|
-      ss.source_files = 'ZZHNetwork/Header/*.{h,m}'
-  end
-  
-  s.subspec 'Private' do |ss|
-      ss.source_files = 'ZZHNetwork/Private/*.{h,m}'
-  end
   
   # 使用到的资源文件
   # s.resource_bundles = {
