@@ -15,12 +15,12 @@
 
 /// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
 @property (nonatomic, copy, nullable, readwrite) ZZHNetworkProgress progressBlock;
+/// 网络回调完成的 block.   在 main queue 执行. (比成功和失败的 block 先调用)
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkVoidHandler completionHandler;
 /// 网络请求成功的回调block.   在 main queue 执行
 @property (nonatomic, copy, nullable, readwrite) ZZHNetworkSuccessHandler successHandler;
 /// 网络请求失败的回调block.   在 main queue 执行
 @property (nonatomic, copy, nullable, readwrite) ZZHNetworkFailHandler failHandler;
-/// 网络请求取消的block.  取消的时候马上在主线程执行
-@property (nonatomic, copy, nullable, readwrite) ZZHNetworkCancelHandler cancelHandler;
 
 
 @end
@@ -38,24 +38,19 @@
 #pragma mark - Public Method
 
 - (void)start {
-    [self startOnProgress:nil onSuccess:nil onFailure:nil onCancel:nil];
+    [self startOnProgress:nil onCompletion:nil onSuccess:nil onFailure:nil];
 }
 
-- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-             onFailure:(nullable ZZHNetworkFailHandler)failHandler {
-    [self startOnProgress:nil onSuccess:successHandler onFailure:failHandler onCancel:nil];
-}
-
-- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-             onFailure:(nullable ZZHNetworkFailHandler)failHandler
-              onCancel:(nullable ZZHNetworkCancelHandler)cancelHandler {
-    [self startOnProgress:nil onSuccess:successHandler onFailure:failHandler onCancel:cancelHandler];
+- (void)startOnCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
+        onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+              onFailure:(nullable ZZHNetworkFailHandler)failHandler {
+    [self startOnProgress:nil onCompletion:complitionHandler onSuccess:successHandler onFailure:failHandler];
 }
 
 - (void)startOnProgress:(nullable ZZHNetworkProgress)progress
+           onCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
               onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-              onFailure:(nullable ZZHNetworkFailHandler)failHandler
-               onCancel:(nullable ZZHNetworkCancelHandler)cancelHandler {
+              onFailure:(nullable ZZHNetworkFailHandler)failHandler {
     // 根据不同的情况执行不同的操作
     if (!self.isExecuting) {
         // 没有正在执行的请求, 直接开始
@@ -70,9 +65,9 @@
     
     //开启一个网络请求
     self.progressBlock = progress;
+    self.completionHandler = complitionHandler;
     self.successHandler = successHandler;
     self.failHandler = failHandler;
-    self.cancelHandler = cancelHandler;
     [[ZZHNetworkAgent sharedAgent] startRequest:self];
 }
 
@@ -87,9 +82,9 @@
 // 删除所有回调 block
 - (void)clearAllBlocks {
     self.progressBlock = nil;
+    self.completionHandler = nil;
     self.successHandler = nil;
     self.failHandler = nil;
-    self.cancelHandler = nil;
 }
 
 @end

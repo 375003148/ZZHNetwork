@@ -28,12 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 请求类型.  默认 ZZHNetworkRequestTypePost
 @property (nonatomic, assign) ZZHNetworkRequestType requestType;
 
-/// 请求完整的URL  (例如：/detail/list)
+/// 请求 URL  (例如：/detail/list , 如果是完整的 URL 则不会拼接 baseURLString)
 @property (nonatomic, copy, nullable) NSString *requestURLString;
 
 /// 请求参数
 @property (nonatomic, copy, nullable) NSDictionary *requestParameters;
-
 
 /// 请求优先级, 默认 ZZHRequestPriorityDefault
 @property (nonatomic, assign) ZZHRequestPriority requestPriority;
@@ -46,11 +45,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 // ======== 一般用于service统一配置 ========
 
+/// 请求 BaseURL  (例如：http://186.134.321.34)
+@property (nonatomic, copy, nullable) NSString *baseURLString;
+
 /// 预处理参数
 @property (nonatomic, copy, nullable) ZZHNetworkPreproccessParameter parameterPreprocess;
 
-/// 预处理成功数据
-@property (nonatomic, copy, nullable) ZZHNetworkPreproccessSuccess successPreprocess;
+/// 预处理返回数据.
+@property (nonatomic, copy, nullable) ZZHNetworkResultPreproccess resultPreprocess;
 
 /// 拦截器
 @property (nonatomic, strong, nullable) id<ZZHNetworkInterceptor> requestInterceptor;
@@ -79,33 +81,31 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter=isExecuting) BOOL executing;
 /// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
 @property (nonatomic, copy, nullable, readonly) ZZHNetworkProgress progressBlock;
+/// 网络回调完成的 block.   在 main queue 执行. (比成功和失败的 block 先调用)
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkVoidHandler completionHandler;
 /// 网络请求成功的回调block.   在 main queue 执行
 @property (nonatomic, copy, nullable, readonly) ZZHNetworkSuccessHandler successHandler;
 /// 网络请求失败的回调block.   在 main queue 执行
 @property (nonatomic, copy, nullable, readonly) ZZHNetworkFailHandler failHandler;
-/// 网络请求取消的block.  取消的时候马上在主线程执行
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkCancelHandler cancelHandler;
 
 #pragma mark - public Action
-/// 开始网络请求.
-/// @discussion 可以配合 delegate 一起使用
+
 - (void)start;
 
-/// 开始网络请求
-/// @param successHandler 请求成功的回调
-/// @param failHandler 请求失败的回调
-/// @discussion 这个方法使用 block 进行回调, 切记不要同时和 delegate 使用
-- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-             onFailure:(nullable ZZHNetworkFailHandler)failHandler;
+- (void)startOnCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
+        onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+                onFailure:(nullable ZZHNetworkFailHandler)failHandler;
 
 
 /// 开始网络请求
-/// @param successHandler 请求成功的回调
-/// @param failHandler 请求失败的回调
-/// @param cancelHandler 请求取消的回调, 在一些有需要的场景才会用到
-- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-             onFailure:(nullable ZZHNetworkFailHandler)failHandler
-              onCancel:(nullable ZZHNetworkCancelHandler)cancelHandler;
+/// @param progress 进度回调
+/// @param complitionHandler 完成回调, 优先于成功和失败的回调, 一般用来处理一些公共事务, 如hud消失
+/// @param successHandler 成功回调
+/// @param failHandler 失败回调
+- (void)startOnProgress:(nullable ZZHNetworkProgress)progress
+           onCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
+              onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+              onFailure:(nullable ZZHNetworkFailHandler)failHandler;
 
 ///  取消网络请求
 /// @discussion 取消会马上执行取消回调, 并不在成功或失败的回调范围.

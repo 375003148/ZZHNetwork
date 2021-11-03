@@ -77,7 +77,8 @@ typedef enum : NSUInteger {
     
     ZZHNetworkLog(@"");
     ZZHNetworkLog(@"========== /网络请求开始/ ==========");
-    ZZHNetworkLog(@"/网络参数/:  %@", request.requestParameters);
+    ZZHNetworkLog(@"//网络URL// -> %@", [self buildRequestUrl:request]);
+    ZZHNetworkLog(@"//网络参数// -> %@", request.requestParameters);
    
     // 拦截器
     if ([request.requestInterceptor respondsToSelector:@selector(requestWillStart)]) {
@@ -246,27 +247,51 @@ typedef enum : NSUInteger {
                  error:(NSError *)error
           responseType:(ZZHNetworkResponseType)type {
 
-    ZZHNetworkLog(@"/网络response/:  %@", responseObject);
-    ZZHNetworkLog(@"/网络error/:  %@", error);
+    ZZHNetworkLog(@"========== /网络请求结果/ ==========");
+    ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
+    ZZHNetworkLog(@"//error// -> %@", error);
+    ZZHNetworkLog(@"========== /网络请求结果/ ==========");
     
     // 拦截器 - requestBeforeCallBack
     if ([request.requestInterceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
         [request.requestInterceptor requestBeforeCallBack];
     }
     
+    // 回调 - completionHandler
+    if (request.completionHandler) {
+        request.completionHandler();
+    }
+    
+    // 预处理返回结果
+    if (request.resultPreprocess && type != ZZHNetworkResponseTypeCancel) {
+        id result = request.resultPreprocess(responseObject, error);
+        if ([result isKindOfClass:[NSNumber class]]) {
+            // 结果通知上层处理了, 直接 return
+            ZZHNetworkLog(@"");
+            ZZHNetworkLog(@"========== /网络结果通知上层处理, 终止回调/ ==========");
+            ZZHNetworkLog(@"========== /网络请求完成/ ==========");
+            ZZHNetworkLog(@"");
+            return;
+        }
+        else if ([result isKindOfClass:[NSError class]]) {
+            // 失败
+            type = ZZHNetworkResponseTypeFailure;
+            error = result;
+        } else {
+            // 成功
+            type = ZZHNetworkResponseTypeSuccess;
+            responseObject = result;
+        }
+    }
+    
     switch (type) {
         case ZZHNetworkResponseTypeSuccess: {
-            // 1.成功
-            // 预处理 responseObject
-            if (request.successPreprocess) {
-                responseObject = request.successPreprocess(responseObject);
-                if (!responseObject) {
-                    ZZHNetworkLog(@"网络结果通知上层进行处理");
-                    return;
-                }
-            }
-            
-            // 回调
+            // 1.成功回调
+            ZZHNetworkLog(@"");
+            ZZHNetworkLog(@"========== /成功回调/ ==========");
+            ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
+            ZZHNetworkLog(@"========== /成功回调/ ==========");
+            ZZHNetworkLog(@"");
             if (request.successHandler) {
                 request.successHandler(responseObject);
             }
@@ -277,6 +302,11 @@ typedef enum : NSUInteger {
             break;
         case ZZHNetworkResponseTypeFailure: {
             // 2.失败
+            ZZHNetworkLog(@"");
+            ZZHNetworkLog(@"========== /失败回调/ ==========");
+            ZZHNetworkLog(@"//error// -> %@", error);
+            ZZHNetworkLog(@"========== /失败回调/ ==========");
+            ZZHNetworkLog(@"");
             if (request.failHandler) {
                 request.failHandler(error);
             }
@@ -287,9 +317,6 @@ typedef enum : NSUInteger {
             break;
         case ZZHNetworkResponseTypeCancel: {
             // 3.取消
-            if (request.cancelHandler) {
-                request.cancelHandler();
-            }
             if (request.delegate && [request.delegate respondsToSelector:@selector(requestDidCancelled)]) {
                 [request.delegate requestDidCancelled];
             }
@@ -360,10 +387,11 @@ typedef enum : NSUInteger {
     //构建request
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSMutableURLRequest *URLRequest = nil;
+    NSString *finalURL = [self buildRequestUrl:request];
     if (request.constructingBlock) {
-        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:request.requestURLString parameters:request.requestParameters constructingBodyWithBlock:request.constructingBlock error:error];
+        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:request.requestParameters constructingBodyWithBlock:request.constructingBlock error:error];
     } else {
-        URLRequest = [requestSerializer requestWithMethod:methodName URLString:request.requestURLString parameters:request.requestParameters error:error];
+        URLRequest = [requestSerializer requestWithMethod:methodName URLString:finalURL parameters:request.requestParameters error:error];
     }
 
     //构架dataTask
@@ -379,7 +407,8 @@ typedef enum : NSUInteger {
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSString *downloadPath = request.resumableDownloadPath;
     
-    NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:request.requestURLString parameters:request.requestParameters error:error];
+    NSString *finalURL = [self buildRequestUrl:request];
+    NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:request.requestParameters error:error];
 
     /// 处理下载路径格式, downloadTargetPath 为最终的下载地址
     // 1.判断路径下是否是文件夹
@@ -536,6 +565,20 @@ typedef enum : NSUInteger {
     Lock();
     [self.requestRecordDic removeObjectForKey:@(request.sessionTask.taskIdentifier)];
     Unlock();
+}
+
+- (NSString *)buildRequestUrl:(ZZHNetworkRequest *)request {
+    NSParameterAssert(request != nil);
+
+    NSURL *baseURL = nil;
+    NSString *baseURLString = [request baseURLString];
+    if (baseURLString.length) {
+        baseURL = [NSURL URLWithString:baseURLString];
+    }
+    if (baseURLString.length && ![baseURLString hasSuffix:@"/"]) {
+        baseURL = [baseURL URLByAppendingPathComponent:@""];
+    }
+    return [[NSURL URLWithString:[request requestURLString] relativeToURL:baseURL] absoluteString];
 }
 
 @end

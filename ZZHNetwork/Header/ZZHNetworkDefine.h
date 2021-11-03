@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, ZZHNetworkResponseSerializerType) {
 /// 请求的回调block
 typedef void (^ZZHNetworkSuccessHandler)(id _Nullable responseObject);
 typedef void (^ZZHNetworkFailHandler)(NSError * _Nullable error);
-typedef void (^ZZHNetworkCancelHandler)(void);
+typedef void (^ZZHNetworkVoidHandler)(void);
 typedef void (^ZZHNetworkProgress)(NSProgress * _Nullable progress);
 
 /// 构建上传数据的block
@@ -62,8 +62,8 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
 /// 预处理请求参数
 typedef NSDictionary *_Nullable(^ZZHNetworkPreproccessParameter)(NSDictionary *_Nullable parameter);
-/// 预处理成功返回结果.  block 返回 nil 表示结果上报到上层进行处理, 此时不走成功的 block 和代理回调 和 拦截器的 requestAfterCallBack 方法
-typedef id _Nullable(^ZZHNetworkPreproccessSuccess)(id _Nullable responseObject);
+/// 预处理返回结果.  返回 @(0) 表示结果上报到上层进行处理,  此时不走成功和失败的block 和代理,  以及拦截器的 requestAfterCallBack 方法
+typedef id _Nullable(^ZZHNetworkResultPreproccess)(id _Nullable responseObject, NSError *_Nullable error);
 
 #pragma mark - 网络请求回调代理
 

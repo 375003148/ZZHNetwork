@@ -9,9 +9,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-void ZZHNetworkLog(NSString *FORMAT, ...);
+#if DEBUG
+#define ZZHNetworkLog(format,...) ZZHNetworkLogFunc(format,##__VA_ARGS__)
+#else
+#define ZZHNetworkLog(format,...) ;
+#endif
+
+void ZZHNetworkLogFunc(NSString *FORMAT, ...);
 
 @interface ZZHNetworkLogDefine : NSObject
+
++ (BOOL)logEnable;
++ (void)setLogEnable:(BOOL)flag;
 
 @end
 

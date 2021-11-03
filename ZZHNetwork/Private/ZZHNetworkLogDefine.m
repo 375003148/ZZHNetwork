@@ -11,7 +11,7 @@ static BOOL LogSwitch = YES;
 
 @implementation ZZHNetworkLogDefine
 
-void ZZHNetworkLog(NSString *FORMAT, ...) {
+void ZZHNetworkLogFunc(NSString *FORMAT, ...) {
     if (LogSwitch) {
         va_list args;
         va_start(args, FORMAT);

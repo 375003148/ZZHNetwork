@@ -26,11 +26,16 @@
 
 //请求类型
 - (ZZHNetworkRequestType)requestType {
-    return ZZHNetworkRequestTypePost;
+    return ZZHNetworkRequestTypeGet;
 }
+
+- (NSString *)baseURLString {
+    return @"https://www.baidu.com";
+}
+
 //请求完整的URL
 - (NSString *)requestURLString {
-    return @"/iphone/register";
+    return @"/1";
 }
 
 - (NSDictionary *)requestParameters{
