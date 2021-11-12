@@ -10,18 +10,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #if DEBUG
-#define ZZHNetworkLog(format,...) ZZHNetworkLogFunc(format,##__VA_ARGS__)
+#define ZZHNetworkLog(FORMAT, ...) fprintf(stderr,"[%s:%d] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
-#define ZZHNetworkLog(format,...) ;
+#define ZZHNetworkLog(FORMAT,...) ;
 #endif
 
-void ZZHNetworkLogFunc(NSString *FORMAT, ...);
+#if DEBUG
+#define ZZHNetworkLogSpace() fprintf(stderr,"\n");
+#else
+#define ZZHNetworkLogSpace() ;
+#endif
 
-@interface ZZHNetworkLogDefine : NSObject
-
-+ (BOOL)logEnable;
-+ (void)setLogEnable:(BOOL)flag;
-
-@end
 
 NS_ASSUME_NONNULL_END

@@ -75,6 +75,10 @@
     [[ZZHNetworkAgent sharedAgent] cancelRequest:self];;
 }
 
++ (void)cancelAllRequests {
+    [[ZZHNetworkAgent sharedAgent] cancelAllRequests];;
+}
+
 - (BOOL)isExecuting {
     return self.sessionTask != nil;
 }

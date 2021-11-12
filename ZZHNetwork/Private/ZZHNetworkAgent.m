@@ -128,7 +128,7 @@ typedef enum : NSUInteger {
         return;
     }
     
-    ZZHNetworkLog(@"========== /网络请求取消/ ==========");
+    ZZHNetworkLog(@"=========== /网络请求取消/ ===========");
     
     //取消网络任务
     if (request.resumableDownloadPath && [self resumeDataPathForDownloadPath:request.resumableDownloadPath]) {
@@ -239,11 +239,12 @@ typedef enum : NSUInteger {
         responseObject:(nullable id)responseObject
                  error:(NSError *)error
           responseType:(ZZHNetworkResponseType)type {
-
-    ZZHNetworkLog(@"========== /网络请求结果/ ==========");
+    ZZHNetworkLogSpace();
+    ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //网络请求原始数据// ↓↓↓↓↓↓↓↓↓↓↓↓");
     ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
     ZZHNetworkLog(@"//error// -> %@", error);
-    ZZHNetworkLog(@"========== /网络请求结果/ ==========");
+    ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //网络请求原始数据// ↑↑↑↑↑↑↑↑↑↑↑↑");
+    ZZHNetworkLogSpace();
     
     // 拦截器 - requestBeforeCallBack
     if ([request.requestInterceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
@@ -260,10 +261,10 @@ typedef enum : NSUInteger {
         id result = [request.preprocessor preproccessResponseObject:responseObject error:error];
         if ([result isKindOfClass:[NSNumber class]]) {
             // 结果通知上层处理了, 直接 return
-            ZZHNetworkLog(@"");
-            ZZHNetworkLog(@"========== /网络结果通知上层处理, 终止回调/ ==========");
-            ZZHNetworkLog(@"========== /网络请求完成/ ==========");
-            ZZHNetworkLog(@"");
+            ZZHNetworkLogSpace();
+            ZZHNetworkLog(@"=========== //网络结果通知上层处理, 终止回调// ===========");
+            ZZHNetworkLog(@"=========== //网络请求完成// ===========");
+            ZZHNetworkLogSpace();
             return;
         }
         else if ([result isKindOfClass:[NSError class]]) {
@@ -280,11 +281,12 @@ typedef enum : NSUInteger {
     switch (type) {
         case ZZHNetworkResponseTypeSuccess: {
             // 1.成功回调
-            ZZHNetworkLog(@"");
-            ZZHNetworkLog(@"========== /成功回调/ ==========");
+            ZZHNetworkLogSpace();
+            ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //成功回调// ↓↓↓↓↓↓↓↓↓↓↓↓");
             ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
-            ZZHNetworkLog(@"========== /成功回调/ ==========");
-            ZZHNetworkLog(@"");
+            ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //成功回调// ↑↑↑↑↑↑↑↑↑↑↑↑");
+            ZZHNetworkLogSpace();
+            
             if (request.successHandler) {
                 request.successHandler(responseObject);
             }
@@ -295,11 +297,12 @@ typedef enum : NSUInteger {
             break;
         case ZZHNetworkResponseTypeFailure: {
             // 2.失败
-            ZZHNetworkLog(@"");
-            ZZHNetworkLog(@"========== /失败回调/ ==========");
+            ZZHNetworkLogSpace();
+            ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //失败回调// ↓↓↓↓↓↓↓↓↓↓↓↓");
             ZZHNetworkLog(@"//error// -> %@", error);
-            ZZHNetworkLog(@"========== /失败回调/ ==========");
-            ZZHNetworkLog(@"");
+            ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //失败回调// ↑↑↑↑↑↑↑↑↑↑↑↑");
+            ZZHNetworkLogSpace();
+            
             if (request.failHandler) {
                 request.failHandler(error);
             }
@@ -324,8 +327,8 @@ typedef enum : NSUInteger {
         [request.requestInterceptor requestAfterCallBack];
     }
     
-    ZZHNetworkLog(@"========== /网络请求完成/ ==========");
-    ZZHNetworkLog(@"");
+    ZZHNetworkLog(@"=========== /网络请求完成/ ===========");
+    ZZHNetworkLogSpace();
 }
 
 #pragma mark - 创建网络任务 sessionTask
