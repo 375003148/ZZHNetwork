@@ -30,20 +30,21 @@
 }
 
 - (NSString *)baseURLString {
-    return @"https://www.baidu.com";
+    return @"https://www.baidu.com/ss";
 }
 
 //请求完整的URL
 - (NSString *)requestURLString {
-    return @"/1";
+    return @"1";
 }
 
-- (NSDictionary *)requestParameters{
+- (id)requestParameters {
     return @{
         @"username": _username,
         @"password": _password
     };
 }
+
 
 //- (ZZHNetworkRequestSerializerType)requestSerializerType {
 //    return ZZHNetworkRequestSerializerTypeHTTP;

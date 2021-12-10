@@ -84,7 +84,7 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
 /// 预处理参数
 /// @param parameters 原始的参数字典
-- (nullable NSDictionary *)preproccessParameter:(nullable NSDictionary *)parameters;
+- (nullable id)preproccessParameter:(nullable id)parameters;
 
 
 /// 预处理请求结果 (注意此方法是在子线程)

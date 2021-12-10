@@ -31,12 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *requestURLString;
 
 /// 请求参数
-@property (nonatomic, copy, nullable) NSDictionary *requestParameters;
+@property (nonatomic, copy, nullable) id requestParameters;
 
 /// 请求优先级, 默认 ZZHRequestPriorityDefault
 @property (nonatomic, assign) ZZHRequestPriority requestPriority;
 
-/// 在POST中构建 HTTP Body 的block
+/// 在POST中构建 HTTP Body 的block.   注意: constructingBlock存在时参数必须为NSDictionary
 @property (nonatomic, copy, nullable) ZZHConstructingBlock constructingBlock;
 
 /// 同时设置了 resumableDownloadPath(注意不为nil) + GET请求, 则表示是断点下载
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 开始网络请求
 /// @param progress 进度回调
-/// @param complitionHandler 完成回调. 这个回调是一定会执行的, 且优先于成功、失败回调 和 拦截器处理, 一般用来处理一些公共事务, 如 hud 的消失.
+/// @param complitionHandler 完成回调. 这个回调会优先于任何回调且必执行的.  一般用来处理一些公共事务, 如 hud 的消失.
 /// @param successHandler 成功回调. 注意被拦截或请求取消时不会执行.
 /// @param failHandler 失败回调.  注意被拦截或请求取消时不会执行.
 - (void)startOnProgress:(nullable ZZHNetworkProgress)progress

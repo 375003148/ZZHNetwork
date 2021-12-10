@@ -246,14 +246,14 @@ typedef enum : NSUInteger {
     ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //网络请求原始数据// ↑↑↑↑↑↑↑↑↑↑↑↑");
     ZZHNetworkLogSpace();
     
-    // 拦截器 - requestBeforeCallBack
-    if ([request.requestInterceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
-        [request.requestInterceptor requestBeforeCallBack];
-    }
-    
     // 回调 - completionHandler
     if (request.completionHandler) {
         request.completionHandler();
+    }
+    
+    // 拦截器 - requestBeforeCallBack
+    if ([request.requestInterceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
+        [request.requestInterceptor requestBeforeCallBack];
     }
     
     // 预处理返回结果
@@ -384,10 +384,10 @@ typedef enum : NSUInteger {
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSMutableURLRequest *URLRequest = nil;
     NSString *finalURL = [self _getRequestUrl:request];
-    NSDictionary *finalParameters = [self _getFinalParameters:request];
+    id finalParameters = [self _getFinalParameters:request];
     
     if (request.constructingBlock) {
-        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:finalParameters constructingBodyWithBlock:request.constructingBlock error:error];
+        URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:(NSDictionary *)finalParameters constructingBodyWithBlock:request.constructingBlock error:error];
     } else {
         URLRequest = [requestSerializer requestWithMethod:methodName URLString:finalURL parameters:finalParameters error:error];
     }
@@ -406,7 +406,7 @@ typedef enum : NSUInteger {
     NSString *downloadPath = request.resumableDownloadPath;
     
     NSString *finalURL = [self _getRequestUrl:request];
-    NSDictionary *finalParameters = [self _getFinalParameters:request];
+    id finalParameters = [self _getFinalParameters:request];
     NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:finalParameters error:error];
 
     /// 处理下载路径格式, downloadTargetPath 为最终的下载地址
@@ -569,22 +569,29 @@ typedef enum : NSUInteger {
 // 获取最终URL
 - (NSString *)_getRequestUrl:(ZZHNetworkRequest *)request {
     NSParameterAssert(request != nil);
-
-    NSURL *baseURL = nil;
-    NSString *baseURLString = [request baseURLString];
-    if (baseURLString.length) {
-        baseURL = [NSURL URLWithString:baseURLString];
+    
+    NSString *baseURLString = [request baseURLString] ?: @"";
+    NSString *requestURLString = [request requestURLString] ?: @"";
+    
+    // 如果 requestURLString 是完整地址, 直接使用
+    if ([requestURLString hasPrefix:@"http"]) {
+        return requestURLString;
     }
-    if (baseURLString.length && ![baseURLString hasSuffix:@"/"]) {
-        baseURL = [baseURL URLByAppendingPathComponent:@""];
+    
+    // 如果 requestURLString 不完整, 则拼接 baseURL
+    if (![baseURLString hasSuffix:@"/"]) {
+        baseURLString =  [NSString stringWithFormat:@"%@/", baseURLString?:@""];
     }
-    return [[NSURL URLWithString:[request requestURLString] relativeToURL:baseURL] absoluteString];
+    if ([requestURLString hasPrefix:@"/"]) {
+        requestURLString = [requestURLString substringFromIndex:1];
+    }
+    return [NSString stringWithFormat:@"%@%@", baseURLString, requestURLString];
 }
 
 // 获取最终参数
-- (NSDictionary *)_getFinalParameters:(ZZHNetworkRequest *)request {
+- (id)_getFinalParameters:(ZZHNetworkRequest *)request {
     // 参数预处理
-    NSDictionary *finalParameters = request.requestParameters;
+    id finalParameters = request.requestParameters;
     if ([request.preprocessor respondsToSelector:@selector(preproccessParameter:)]) {
         finalParameters = [request.preprocessor preproccessParameter:request.requestParameters];
     }
