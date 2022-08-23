@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 网络设置(子类继承进行设置)
 
-/// 网络请求策略.  默认是 ZZHRequestStrategyByOld,多次调用时已初始的请求为准
+/// 网络请求策略.  默认是 ZZHRequestStrategyByOld, 多次调用时已初始的请求为准
 @property (nonatomic, assign) ZZHRequestStrategy requestStrategy;
 
 /// 网络请求回调代理.
@@ -51,12 +51,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) id<ZZHNetworkPreproccess>preprocessor;
 
 /// 拦截器
-@property (nonatomic, strong, nullable) id<ZZHNetworkInterceptor> requestInterceptor;
+@property (nonatomic, strong, nullable, readonly) NSMutableArray <id<ZZHNetworkInterceptor>> *requestInterceptors;
 
 /// 超时时间. 0表示不设置超时
 @property (nonatomic, assign) NSTimeInterval requestTimeoutInterval;
 
-/// 允许使用蜂窝网络, 默认YES
+/// 允许使用蜂窝网络. 默认YES
 @property (nonatomic, assign) BOOL allowsCellularAccess;
 
 /// 请求序列类型, 默认 ZZHNetworkRequestSerializerTypeHTTP
@@ -77,8 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter=isExecuting) BOOL executing;
 /// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
 @property (nonatomic, copy, nullable, readonly) ZZHNetworkProgress progressBlock;
-/// 网络回调完成的 block.   在 main queue 执行. (比成功和失败的 block 和 拦截器之前先调用)
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkVoidHandler completionHandler;
+/// 网络回调完成的 block.   在 main queue 执行. (在任何情况下都会触发调用)
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkVoidHandler beforeCallBackHandler;
 /// 网络请求成功的回调block.   在 main queue 执行
 @property (nonatomic, copy, nullable, readonly) ZZHNetworkSuccessHandler successHandler;
 /// 网络请求失败的回调block.   在 main queue 执行
@@ -88,30 +88,38 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)start;
 
-- (void)startOnCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
-        onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-                onFailure:(nullable ZZHNetworkFailHandler)failHandler;
+- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+             onFailure:(nullable ZZHNetworkFailHandler)failHandler;
 
+- (void)startBeforeCompletion:(nullable ZZHNetworkVoidHandler)beforeCompletion
+                    onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+                    onFailure:(nullable ZZHNetworkFailHandler)failHandler;
 
 /// 开始网络请求
 /// @param progress 进度回调
-/// @param complitionHandler 完成回调. 这个回调会优先于任何回调且必执行的.  一般用来处理一些公共事务, 如 hud 的消失.
+/// @param beforeCompletion 完成之前的回调. 会优先于任何回调且必执行的.  一般用来处理一些公共事务, 如 hud 的消失.
 /// @param successHandler 成功回调. 注意被拦截或请求取消时不会执行.
 /// @param failHandler 失败回调.  注意被拦截或请求取消时不会执行.
 - (void)startOnProgress:(nullable ZZHNetworkProgress)progress
-           onCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
+       beforeCompletion:(nullable ZZHNetworkVoidHandler)beforeCompletion
               onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
               onFailure:(nullable ZZHNetworkFailHandler)failHandler;
 
-///  取消网络请求
+/// 取消网络请求
 /// @discussion 取消会马上执行取消回调, 并不在成功或失败的回调范围.
 - (void)cancel;
 
-// 取消所有请求
+/// 取消所有请求
 + (void)cancelAllRequests;
 
-// 删除所有回调 block, 此方法供内部使用, 外部不要调用
+/// 删除所有回调. 此方法供内部使用,外部不要调用
 - (void)clearAllBlocks;
+
+/// 添加拦截器
+- (void)addInterceptor:(id<ZZHNetworkInterceptor>)interceptor;
+
+/// 删除拦截器
+- (void)removeInterceptor:(id<ZZHNetworkInterceptor>)interceptor;
 
 @end
 

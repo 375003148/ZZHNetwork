@@ -75,14 +75,15 @@ typedef enum : NSUInteger {
 - (void)startRequest:(nonnull ZZHNetworkRequest *)request; {
     NSParameterAssert(request != nil);
     
-    ZZHNetworkLog(@"");
-    ZZHNetworkLog(@"========== /网络请求开始/ ==========");
+    ZZHNetworkLog(@"\n========== /网络请求开始/ ==========");
     ZZHNetworkLog(@"//网络URL// -> %@", [self _getRequestUrl:request]);
     ZZHNetworkLog(@"//网络参数// -> %@", [self _getFinalParameters:request]);
    
-    // 拦截器
-    if ([request.requestInterceptor respondsToSelector:@selector(requestWillStart)]) {
-        [request.requestInterceptor requestWillStart];
+    // 拦截器 - requestWillStart
+    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+        if ([interceptor respondsToSelector:@selector(requestWillStart)]) {
+            [interceptor requestWillStart];
+        }
     }
     
     // 创建一个新的请求任务
@@ -246,14 +247,16 @@ typedef enum : NSUInteger {
     ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //网络请求原始数据// ↑↑↑↑↑↑↑↑↑↑↑↑");
     ZZHNetworkLogSpace();
     
-    // 回调 - completionHandler
-    if (request.completionHandler) {
-        request.completionHandler();
+    // 回调 - beforeCallBackHandler
+    if (request.beforeCallBackHandler) {
+        request.beforeCallBackHandler();
     }
     
     // 拦截器 - requestBeforeCallBack
-    if ([request.requestInterceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
-        [request.requestInterceptor requestBeforeCallBack];
+    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+        if ([interceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
+            [interceptor requestBeforeCallBack];
+        }
     }
     
     // 预处理返回结果
@@ -323,8 +326,10 @@ typedef enum : NSUInteger {
     }
     
     // 拦截器 - requestAfterCallBack
-    if ([request.requestInterceptor respondsToSelector:@selector(requestAfterCallBack)]) {
-        [request.requestInterceptor requestAfterCallBack];
+    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+        if ([interceptor respondsToSelector:@selector(requestAfterCallBack)]) {
+            [interceptor requestAfterCallBack];
+        }
     }
     
     ZZHNetworkLog(@"=========== /网络请求完成/ ===========");

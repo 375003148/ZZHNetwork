@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 请求优先级
 typedef NS_ENUM(NSInteger, ZZHRequestStrategy) {
-    ZZHRequestStrategyByOld = 0, // 多次调用时只执行初始的请求
-    ZZHRequestStrategyByNew,     // 多次调用时只执行最新的请求
-    
+    ZZHRequestStrategyByOld = 0, // 多次调用时只执行初始的请求 
+    ZZHRequestStrategyByNew,     // 多次调用时只执行最新的请求 (旧的会被cancel掉)
 };
 
 /// 请求优先级

@@ -83,7 +83,7 @@
 
 - (void)requestForGet {
     ZZHGetRequest *request = [[ZZHGetRequest alloc] initWithUsername:@"133" password:@"1323"];
-    [request startOnCompletion:^{
+    [request startBeforeCompletion:^{
         NSLog(@"完成");
     } onSuccess:^(id  _Nullable responseObject) {
         NSLog(@"成功");

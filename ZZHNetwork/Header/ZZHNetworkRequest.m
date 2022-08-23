@@ -13,15 +13,12 @@
 
 @interface ZZHNetworkRequest ()
 
-/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
-@property (nonatomic, copy, nullable, readwrite) ZZHNetworkProgress progressBlock;
-/// 网络回调完成的 block.   在 main queue 执行. (比成功和失败的 block 先调用)
-@property (nonatomic, copy, nullable, readwrite) ZZHNetworkVoidHandler completionHandler;
-/// 网络请求成功的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable, readwrite) ZZHNetworkSuccessHandler successHandler;
-/// 网络请求失败的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable, readwrite) ZZHNetworkFailHandler failHandler;
+@property (nonatomic, strong, nullable, readwrite) NSMutableArray <id<ZZHNetworkInterceptor>> *requestInterceptors;
 
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkProgress progressBlock;
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkVoidHandler beforeCallBackHandler;
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkSuccessHandler successHandler;
+@property (nonatomic, copy, nullable, readwrite) ZZHNetworkFailHandler failHandler;
 
 @end
 
@@ -38,17 +35,22 @@
 #pragma mark - Public Method
 
 - (void)start {
-    [self startOnProgress:nil onCompletion:nil onSuccess:nil onFailure:nil];
+    [self startOnProgress:nil beforeCompletion:nil onSuccess:nil onFailure:nil];
 }
 
-- (void)startOnCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
-        onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
-              onFailure:(nullable ZZHNetworkFailHandler)failHandler {
-    [self startOnProgress:nil onCompletion:complitionHandler onSuccess:successHandler onFailure:failHandler];
+- (void)startOnSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+             onFailure:(nullable ZZHNetworkFailHandler)failHandler {
+    [self startOnProgress:nil beforeCompletion:nil onSuccess:successHandler onFailure:failHandler];
+}
+
+- (void)startBeforeCompletion:(nullable ZZHNetworkVoidHandler)beforeCompletion
+                    onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
+                    onFailure:(nullable ZZHNetworkFailHandler)failHandler {
+    [self startOnProgress:nil beforeCompletion:beforeCompletion onSuccess:successHandler onFailure:failHandler];
 }
 
 - (void)startOnProgress:(nullable ZZHNetworkProgress)progress
-           onCompletion:(nullable ZZHNetworkVoidHandler)complitionHandler
+       beforeCompletion:(nullable ZZHNetworkVoidHandler)beforeCompletion
               onSuccess:(nullable ZZHNetworkSuccessHandler)successHandler
               onFailure:(nullable ZZHNetworkFailHandler)failHandler {
     // 根据不同的情况执行不同的操作
@@ -65,7 +67,7 @@
     
     //开启一个网络请求
     self.progressBlock = progress;
-    self.completionHandler = complitionHandler;
+    self.beforeCallBackHandler = beforeCompletion;
     self.successHandler = successHandler;
     self.failHandler = failHandler;
     [[ZZHNetworkAgent sharedAgent] startRequest:self];
@@ -86,9 +88,23 @@
 // 删除所有回调 block
 - (void)clearAllBlocks {
     self.progressBlock = nil;
-    self.completionHandler = nil;
+    self.beforeCallBackHandler = nil;
     self.successHandler = nil;
     self.failHandler = nil;
+}
+
+- (void)addInterceptor:(id<ZZHNetworkInterceptor>)interceptor {
+    if (!self.requestInterceptors) {
+        self.requestInterceptors = [NSMutableArray array];
+    }
+    [self.requestInterceptors addObject:interceptor];
+}
+
+- (void)removeInterceptor:(id<ZZHNetworkInterceptor>)interceptor {
+    if (!self.requestInterceptors) {
+        self.requestInterceptors = [NSMutableArray array];
+    }
+    [self.requestInterceptors removeObject:interceptor];
 }
 
 @end
