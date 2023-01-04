@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 请求优先级
+/// 请求策略
 typedef NS_ENUM(NSInteger, ZZHRequestStrategy) {
     ZZHRequestStrategyByOld = 0, // 多次调用时只执行初始的请求 
     ZZHRequestStrategyByNew,     // 多次调用时只执行最新的请求 (旧的会被cancel掉)
@@ -37,6 +37,12 @@ typedef NS_ENUM(NSUInteger, ZZHNetworkRequestType) {
 typedef NS_ENUM(NSUInteger, ZZHNetworkRequestSerializerType) {
     ZZHNetworkRequestSerializerTypeHTTP = 0,
     ZZHNetworkRequestSerializerTypeJSON,
+};
+
+typedef NS_ENUM(NSUInteger, ZZHNetworkLogLevel) {
+    ZZHNetworkLogLevelOff = -4,     // 关闭打印
+    ZZHNetworkLogLevelDefault = 0,   // 打印网络请求最终数据
+    ZZHNetworkLogLevelDetail = 4,    // 打印所有详细数据
 };
 
 /// 返回数据格式
@@ -87,7 +93,7 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
 
 /// 预处理请求结果 (注意此方法是在子线程)
-/// @return 返回最终的数据格式. 如果返回nil, 表示事件已经分发, 不执行回调. 如果为NSError则执行失败回调, 其它情况执行成功回调
+/// @return 返回最终的数据格式. 如果返回NSNumber, 表示事件已经分发, 不执行回调. 如果为NSError则执行失败回调, 其它情况执行成功回调
 - (nullable id)preproccessResponseObject:(nullable id)responseObject error:(nullable NSError *)error;
 
 @end

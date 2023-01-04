@@ -48,10 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *baseURLString;
 
 /// 预处理器
-@property (nonatomic, copy, nullable) id<ZZHNetworkPreproccess>preprocessor;
-
-/// 拦截器
-@property (nonatomic, strong, nullable, readonly) NSMutableArray <id<ZZHNetworkInterceptor>> *requestInterceptors;
+@property (nonatomic, strong, nullable) id<ZZHNetworkPreproccess>preprocessor;
 
 /// 超时时间. 0表示不设置超时
 @property (nonatomic, assign) NSTimeInterval requestTimeoutInterval;
@@ -70,6 +67,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 增添请求头参数
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> *requestHeaderFieldValueDictionary;
+
+/// 打印等级. 默认 ZZHNetworkLogLevelDefault
+@property (nonatomic, assign) ZZHNetworkLogLevel logLevel;
 
 #pragma mark - 可读信息
 
@@ -120,6 +120,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 删除拦截器
 - (void)removeInterceptor:(id<ZZHNetworkInterceptor>)interceptor;
+
+/// 获取所有的拦截器
+- (NSArray <id<ZZHNetworkInterceptor>> *)allRequestInterceptors;
 
 @end
 

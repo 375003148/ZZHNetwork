@@ -10,6 +10,7 @@
 #import "ZZHNetworkAgent.h"
 #import "AFNetworking.h"
 #import "ZZHNetworkRequest+Private.h"
+#import "ZZHNetworkLog.h"
 
 @interface ZZHNetworkRequest ()
 
@@ -57,13 +58,16 @@
     if (!self.isExecuting) {
         // 没有正在执行的请求, 直接开始
     } else if (self.requestStrategy == ZZHRequestStrategyByOld) {
-        // 啥都不做
+        // 旧请求正在执行中, 新请求直接忽略掉
+        [ZZHNetworkLog logRequest:self mes:@"重复请求, 继续执行旧请求"];
+        
         return;
     } else {
-        // 取消旧请求,开始新的
+        // 取消旧请求,开始新请求
+        [ZZHNetworkLog logRequest:self mes:@"重复请求, 取消旧请求, 执行新请求"];
+
         [self cancel];
     }
-    
     
     //开启一个网络请求
     self.progressBlock = progress;
@@ -105,6 +109,10 @@
         self.requestInterceptors = [NSMutableArray array];
     }
     [self.requestInterceptors removeObject:interceptor];
+}
+
+- (NSArray <id<ZZHNetworkInterceptor>> *)allRequestInterceptors {
+    return [self.requestInterceptors copy];;
 }
 
 @end

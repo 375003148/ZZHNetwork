@@ -24,6 +24,10 @@
 
 #pragma mark - Override
 
+- (ZZHNetworkLogLevel)logLevel {
+    return ZZHNetworkLogLevelDetail;
+}
+
 //请求类型
 - (ZZHNetworkRequestType)requestType {
     return ZZHNetworkRequestTypeGet;

@@ -12,7 +12,7 @@
 #import "ZZHNetworkUtil.h"
 #import "ZZHNetworkDefine.h"
 #import "ZZHNetworkRequest+Private.h"
-#import "ZZHNetworkLogDefine.h"
+#import "ZZHNetworkLog.h"
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)
@@ -74,13 +74,9 @@ typedef enum : NSUInteger {
 #pragma mark - Public Method
 - (void)startRequest:(nonnull ZZHNetworkRequest *)request; {
     NSParameterAssert(request != nil);
-    
-    ZZHNetworkLog(@"\n========== /网络请求开始/ ==========");
-    ZZHNetworkLog(@"//网络URL// -> %@", [self _getRequestUrl:request]);
-    ZZHNetworkLog(@"//网络参数// -> %@", [self _getFinalParameters:request]);
    
     // 拦截器 - requestWillStart
-    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+    for (id<ZZHNetworkInterceptor> interceptor in [request allRequestInterceptors]) {
         if ([interceptor respondsToSelector:@selector(requestWillStart)]) {
             [interceptor requestWillStart];
         }
@@ -89,8 +85,14 @@ typedef enum : NSUInteger {
     // 创建一个新的请求任务
     NSError * __autoreleasing requestError = nil;
     NSURLSessionTask *sessionTask = [self taskForRequest:request error:&requestError];
+    request.sessionTask = sessionTask;
+    
+    // 打印日志
+    [ZZHNetworkLog logRequestStart:request];
+    
     if (requestError) {
         //创建task失败
+        request.sessionTask = nil;
         [self handleCallBack:request responseObject:nil error:requestError responseType:ZZHNetworkResponseTypeFailure];
         return;
     }
@@ -120,7 +122,6 @@ typedef enum : NSUInteger {
     
     //开启任务
     [sessionTask resume];
-    request.sessionTask = sessionTask;
     return;
 }
 
@@ -129,13 +130,14 @@ typedef enum : NSUInteger {
         return;
     }
     
-    ZZHNetworkLog(@"=========== /网络请求取消/ ===========");
+    // 打印信息
+    [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 网络请求取消 <<<<<<<<<<"];
     
     //取消网络任务
-    if (request.resumableDownloadPath && [self resumeDataPathForDownloadPath:request.resumableDownloadPath]) {
+    if (request.resumableDownloadPath && [request resumeDataPath]) {
         NSURLSessionDownloadTask *requestTask = (NSURLSessionDownloadTask *)request.sessionTask;
         [requestTask cancelByProducingResumeData:^(NSData *resumeData) {
-            NSURL *localUrl = [self resumeDataPathForDownloadPath:request.resumableDownloadPath];
+            NSURL *localUrl = [request resumeDataPath];
             [resumeData writeToURL:localUrl atomically:YES];
         }];
     } else {
@@ -207,7 +209,7 @@ typedef enum : NSUInteger {
     if (type == ZZHNetworkResponseTypeFailure) {
         // 下载失败时将 resume data 存放在 resume path 下
         if (request.resumableDownloadPath) {
-            NSURL *tmpDownloadPath = [self resumeDataPathForDownloadPath:request.resumableDownloadPath];
+            NSURL *tmpDownloadPath = [request resumeDataPath];
             NSData *resumeData = error.userInfo[NSURLSessionDownloadTaskResumeData];
             if (tmpDownloadPath && resumeData) {
                 [resumeData writeToURL:tmpDownloadPath atomically:YES];
@@ -240,12 +242,9 @@ typedef enum : NSUInteger {
         responseObject:(nullable id)responseObject
                  error:(NSError *)error
           responseType:(ZZHNetworkResponseType)type {
-    ZZHNetworkLogSpace();
-    ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //网络请求原始数据// ↓↓↓↓↓↓↓↓↓↓↓↓");
-    ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
-    ZZHNetworkLog(@"//error// -> %@", error);
-    ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //网络请求原始数据// ↑↑↑↑↑↑↑↑↑↑↑↑");
-    ZZHNetworkLogSpace();
+    
+    // 打印网络请求原始返回数据
+    [ZZHNetworkLog logRequestResponse:request responseObject:responseObject error:error];
     
     // 回调 - beforeCallBackHandler
     if (request.beforeCallBackHandler) {
@@ -253,7 +252,7 @@ typedef enum : NSUInteger {
     }
     
     // 拦截器 - requestBeforeCallBack
-    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+    for (id<ZZHNetworkInterceptor> interceptor in [request allRequestInterceptors]) {
         if ([interceptor respondsToSelector:@selector(requestBeforeCallBack)]) {
             [interceptor requestBeforeCallBack];
         }
@@ -264,10 +263,9 @@ typedef enum : NSUInteger {
         id result = [request.preprocessor preproccessResponseObject:responseObject error:error];
         if ([result isKindOfClass:[NSNumber class]]) {
             // 结果通知上层处理了, 直接 return
-            ZZHNetworkLogSpace();
-            ZZHNetworkLog(@"=========== //网络结果通知上层处理, 终止回调// ===========");
-            ZZHNetworkLog(@"=========== //网络请求完成// ===========");
-            ZZHNetworkLogSpace();
+            
+            // 打印信息
+            [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 网络结果通知上层处理, 终止回调 <<<<<<<<<<"];
             return;
         }
         else if ([result isKindOfClass:[NSError class]]) {
@@ -284,11 +282,7 @@ typedef enum : NSUInteger {
     switch (type) {
         case ZZHNetworkResponseTypeSuccess: {
             // 1.成功回调
-            ZZHNetworkLogSpace();
-            ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //成功回调// ↓↓↓↓↓↓↓↓↓↓↓↓");
-            ZZHNetworkLog(@"//responseObject// -> %@", responseObject);
-            ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //成功回调// ↑↑↑↑↑↑↑↑↑↑↑↑");
-            ZZHNetworkLogSpace();
+            [ZZHNetworkLog logSuccess:request responseObject:responseObject];
             
             if (request.successHandler) {
                 request.successHandler(responseObject);
@@ -300,11 +294,7 @@ typedef enum : NSUInteger {
             break;
         case ZZHNetworkResponseTypeFailure: {
             // 2.失败
-            ZZHNetworkLogSpace();
-            ZZHNetworkLog(@"↓↓↓↓↓↓↓↓↓↓↓↓ //失败回调// ↓↓↓↓↓↓↓↓↓↓↓↓");
-            ZZHNetworkLog(@"//error// -> %@", error);
-            ZZHNetworkLog(@"↑↑↑↑↑↑↑↑↑↑↑↑ //失败回调// ↑↑↑↑↑↑↑↑↑↑↑↑");
-            ZZHNetworkLogSpace();
+            [ZZHNetworkLog logFailure:request error:error];
             
             if (request.failHandler) {
                 request.failHandler(error);
@@ -326,14 +316,11 @@ typedef enum : NSUInteger {
     }
     
     // 拦截器 - requestAfterCallBack
-    for (id<ZZHNetworkInterceptor> interceptor in request.requestInterceptors) {
+    for (id<ZZHNetworkInterceptor> interceptor in [request allRequestInterceptors]) {
         if ([interceptor respondsToSelector:@selector(requestAfterCallBack)]) {
             [interceptor requestAfterCallBack];
         }
     }
-    
-    ZZHNetworkLog(@"=========== /网络请求完成/ ===========");
-    ZZHNetworkLogSpace();
 }
 
 #pragma mark - 创建网络任务 sessionTask
@@ -388,8 +375,8 @@ typedef enum : NSUInteger {
     //构建request
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSMutableURLRequest *URLRequest = nil;
-    NSString *finalURL = [self _getRequestUrl:request];
-    id finalParameters = [self _getFinalParameters:request];
+    NSString *finalURL = [request getFinalURL];
+    id finalParameters = [request getFinalParameters];
     
     if (request.constructingBlock) {
         URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:(NSDictionary *)finalParameters constructingBodyWithBlock:request.constructingBlock error:error];
@@ -402,6 +389,7 @@ typedef enum : NSUInteger {
     dataTask = [_manager dataTaskWithRequest:URLRequest uploadProgress:uploadProgress downloadProgress:downloadProgress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         [self handleNetworkResult:dataTask responseObject:responseObject error:error];
     }];
+
     return dataTask;
 }
 
@@ -410,8 +398,8 @@ typedef enum : NSUInteger {
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSString *downloadPath = request.resumableDownloadPath;
     
-    NSString *finalURL = [self _getRequestUrl:request];
-    id finalParameters = [self _getFinalParameters:request];
+    NSString *finalURL = [request getFinalURL];
+    id finalParameters = [request getFinalParameters];
     NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:finalParameters error:error];
 
     /// 处理下载路径格式, downloadTargetPath 为最终的下载地址
@@ -439,7 +427,7 @@ typedef enum : NSUInteger {
     
     __block NSURLSessionDownloadTask *downloadTask = nil;
     // 根据resume path的下的数据存在性和有效性, 判断下载任务是继续下载还是全新的下载任务
-    NSURL *resumePath = [self resumeDataPathForDownloadPath:downloadPath];
+    NSURL *resumePath = [request resumeDataPath];
     if (resumePath) {
         BOOL resumeDataIsExists = [[NSFileManager defaultManager] fileExistsAtPath:resumePath.path];
         NSData *resumeData = [NSData dataWithContentsOfURL:resumePath];
@@ -461,7 +449,7 @@ typedef enum : NSUInteger {
                 resumeSucceeded = YES;
             } @catch (NSException *exception) {
                 // 恢复下载失败, 直接开启一个全新的下载任务
-                ZZHNetworkLog(@"恢复下载失败, reason: %@", exception.reason);
+                [ZZHNetworkLog logRequest:request mes:@">>>恢复下载失败, reason: %@", exception.reason];
                 resumeSucceeded = NO;
             }
         }
@@ -477,35 +465,6 @@ typedef enum : NSUInteger {
     }
     
     return downloadTask;
-}
-
-#pragma mark - 断点续传路径
-// 根据 downloadPath 生成一个对应的 resume path, 在下载中断或取消时resume data会存放在此
-- (nullable NSURL *)resumeDataPathForDownloadPath:(nonnull NSString *)downloadPath {
-    NSString *tempPath = nil;
-    NSString *md5String = [ZZHNetworkUtil MD5String:downloadPath];
-    tempPath = [[self tmpDownloadCacheFolder] stringByAppendingPathComponent:md5String];
-    return tempPath == nil ? nil : [NSURL fileURLWithPath:tempPath];
-}
-
-/// 临时数据的文件夹路径
-- (nullable NSString *)tmpDownloadCacheFolder {
-    NSFileManager *fileManager = [NSFileManager new];
-    
-    static NSString *cacheFolder;
-    if (!cacheFolder) {
-        NSString *cacheDir = NSTemporaryDirectory();
-        cacheFolder = [cacheDir stringByAppendingPathComponent:@"Incomplete"];
-    }
-
-    NSError *error = nil;
-    if(![fileManager createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-        ZZHNetworkLog(@"临时文件路径失败: %@", cacheFolder);
-        return nil;
-    } else {
-        ZZHNetworkLog(@"临时文件路径: %@", cacheFolder);
-        return cacheFolder;
-    }
 }
 
 #pragma mark - other
@@ -539,7 +498,6 @@ typedef enum : NSUInteger {
             [requestSerializer setValue:value forHTTPHeaderField:httpHeaderField];
         }
     }
-    
     return requestSerializer;
 }
 
@@ -569,38 +527,6 @@ typedef enum : NSUInteger {
     Lock();
     [self.requestRecordDic removeObjectForKey:@(request.sessionTask.taskIdentifier)];
     Unlock();
-}
-
-// 获取最终URL
-- (NSString *)_getRequestUrl:(ZZHNetworkRequest *)request {
-    NSParameterAssert(request != nil);
-    
-    NSString *baseURLString = [request baseURLString] ?: @"";
-    NSString *requestURLString = [request requestURLString] ?: @"";
-    
-    // 如果 requestURLString 是完整地址, 直接使用
-    if ([requestURLString hasPrefix:@"http"]) {
-        return requestURLString;
-    }
-    
-    // 如果 requestURLString 不完整, 则拼接 baseURL
-    if (![baseURLString hasSuffix:@"/"]) {
-        baseURLString =  [NSString stringWithFormat:@"%@/", baseURLString?:@""];
-    }
-    if ([requestURLString hasPrefix:@"/"]) {
-        requestURLString = [requestURLString substringFromIndex:1];
-    }
-    return [NSString stringWithFormat:@"%@%@", baseURLString, requestURLString];
-}
-
-// 获取最终参数
-- (id)_getFinalParameters:(ZZHNetworkRequest *)request {
-    // 参数预处理
-    id finalParameters = request.requestParameters;
-    if ([request.preprocessor respondsToSelector:@selector(preproccessParameter:)]) {
-        finalParameters = [request.preprocessor preproccessParameter:request.requestParameters];
-    }
-    return finalParameters;
 }
 
 @end

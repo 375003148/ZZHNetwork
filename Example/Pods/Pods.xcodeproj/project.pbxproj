@@ -47,7 +47,8 @@
 		A7E6C236F5C97B35484B553454B609B0 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 37D5F2CEB9B6937C268DB26EEF62978D /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB53DD17272FC01A004E08D8 /* ZZHNetworkRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AB53DD15272FC01A004E08D8 /* ZZHNetworkRequest+Private.h */; };
 		AB53DD18272FC01A004E08D8 /* ZZHNetworkRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */; };
-		AB53DD2B272FC914004E08D8 /* ZZHNetworkLogDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = AB53DD29272FC914004E08D8 /* ZZHNetworkLogDefine.h */; };
+		AB6FBE1C2963CBD00030E8FE /* ZZHNetworkLog.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */; };
+		AB6FBE1D2963CBD00030E8FE /* ZZHNetworkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */; };
 		AC62B028EA6276D5585D08BB8F693876 /* ZZHNetwork-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA1FD723EE9C99A309E686C653F10AC /* ZZHNetwork-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AECFCA2598AABAEB044F6C4594F3222F /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 842F909230AAC675241531ECA8AEE4A5 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4658F8495B18BD4EB5D893CAFF3BBBC /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 00751FC3948A1A9F1FFAB649018002D8 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -155,7 +156,8 @@
 		AB4985052CB52ECBD72DEF8FE5AB5011 /* Pods-ZZHNetwork_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZZHNetwork_Example-dummy.m"; sourceTree = "<group>"; };
 		AB53DD15272FC01A004E08D8 /* ZZHNetworkRequest+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZHNetworkRequest+Private.h"; sourceTree = "<group>"; };
 		AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZZHNetworkRequest+Private.m"; sourceTree = "<group>"; };
-		AB53DD29272FC914004E08D8 /* ZZHNetworkLogDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkLogDefine.h; sourceTree = "<group>"; };
+		AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkLog.h; sourceTree = "<group>"; };
+		AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkLog.m; sourceTree = "<group>"; };
 		AD17D9274B40A5FC6C56B0620750ADEC /* ZZHNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZHNetwork.release.xcconfig; sourceTree = "<group>"; };
 		B4D9CF71DA91C2758689E5548AFB791C /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		B612BD4EE4F3E96EDA4A2251F15EA64A /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
@@ -311,7 +313,8 @@
 				AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */,
 				672B032AE290BC280BE8B1B4AA813844 /* ZZHNetworkUtil.h */,
 				FC520CDCC5C7BE8947865307BC9978A9 /* ZZHNetworkUtil.m */,
-				AB53DD29272FC914004E08D8 /* ZZHNetworkLogDefine.h */,
+				AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */,
+				AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */,
 			);
 			name = Private;
 			path = ZZHNetwork/Private;
@@ -490,10 +493,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB53DD2B272FC914004E08D8 /* ZZHNetworkLogDefine.h in Headers */,
 				3F5E1E8E74CBA5163086BC0E24462C06 /* ZZHNetwork.h in Headers */,
 				AC62B028EA6276D5585D08BB8F693876 /* ZZHNetwork-umbrella.h in Headers */,
 				8FE1CAA68E7A33CD8833385684A2D61A /* ZZHNetworkAgent.h in Headers */,
+				AB6FBE1C2963CBD00030E8FE /* ZZHNetworkLog.h in Headers */,
 				ED689FF30AD1831E3E5BE5CED0344FF4 /* ZZHNetworkDefine.h in Headers */,
 				47BC6F05AD102761791673A1C6176F53 /* ZZHNetworkRequest.h in Headers */,
 				AB53DD17272FC01A004E08D8 /* ZZHNetworkRequest+Private.h in Headers */,
@@ -730,6 +733,7 @@
 				F0E03FB136623415E22F019F77D9E385 /* ZZHNetwork-dummy.m in Sources */,
 				ED9F647296507BDDA3D949487F18A8A5 /* ZZHNetworkAgent.m in Sources */,
 				90324B59389EACF01FFDE6F2653707B4 /* ZZHNetworkDefine.m in Sources */,
+				AB6FBE1D2963CBD00030E8FE /* ZZHNetworkLog.m in Sources */,
 				3D8852C9E94F0C2BAB4113284EF6EB15 /* ZZHNetworkRequest.m in Sources */,
 				AB53DD18272FC01A004E08D8 /* ZZHNetworkRequest+Private.m in Sources */,
 				96FB3B608D1AF1DF5B52C840B0C296D3 /* ZZHNetworkUtil.m in Sources */,
