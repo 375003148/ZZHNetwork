@@ -6,9 +6,9 @@
 //
 
 #import "ZZHNetworkRequest+Private.h"
-#import <objc/runtime.h>
 #import "ZZHNetworkUtil.h"
 #import "ZZHNetworkLog.h"
+#import <objc/runtime.h>
 
 @implementation ZZHNetworkRequest (Private)
 

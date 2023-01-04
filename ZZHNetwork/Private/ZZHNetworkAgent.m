@@ -7,12 +7,12 @@
 //
 
 #import "ZZHNetworkAgent.h"
-#import "AFNetworking.h"
 #import <pthread/pthread.h>
 #import "ZZHNetworkUtil.h"
 #import "ZZHNetworkDefine.h"
 #import "ZZHNetworkRequest+Private.h"
 #import "ZZHNetworkLog.h"
+#import <AFNetworking/AFNetworking.h>
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)

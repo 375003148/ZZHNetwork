@@ -8,9 +8,10 @@
 
 #import "ZZHNetworkRequest.h"
 #import "ZZHNetworkAgent.h"
-#import "AFNetworking.h"
 #import "ZZHNetworkRequest+Private.h"
 #import "ZZHNetworkLog.h"
+
+#import <AFNetworking/AFNetworking.h>
 
 @interface ZZHNetworkRequest ()
 
