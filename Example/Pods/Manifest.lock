@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - ZZHNetwork (1.0.0):
+  - ZZHNetwork (1.4.1):
     - AFNetworking (~> 4.0)
 
 DEPENDENCIES:
@@ -30,8 +30,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  ZZHNetwork: 815423bb55709c7e7b012c35321a2ad512c5295d
+  ZZHNetwork: 60ed2b439767a974098b1d8a7733737b6eee7242
 
 PODFILE CHECKSUM: 2d39391ac201be28a79f82a38bbbf110c839a82b
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

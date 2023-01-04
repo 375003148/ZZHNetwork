@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
 
   
   # 使用的系统库
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'Foundation'
   # 使用三方库
   s.dependency 'AFNetworking', '~> 4.0'
 end

@@ -9,27 +9,31 @@
 /* Begin PBXBuildFile section */
 		01BEB06B4E262DCEA7A94F4206311BF9 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2D8C6F89E11A531AD7544C065F4DDC /* UIRefreshControl+AFNetworking.m */; };
 		02937E01710489D6668D0C3700E8EADA /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FB51F7DEB07C68843C396B8C44B0FA /* UIProgressView+AFNetworking.m */; };
+		0450C3432D0C81AB171F66D3AFF279FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */; };
 		07E08C56386C02093F27CF28E4D01F11 /* WKWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CBFDF83F2C855F29352862D71100C1B2 /* WKWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		08D5C0606D6FBFB4877FC3C3FF4A2208 /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5B0AF0DE2BD9E6FABC0D47C0DA60320 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0CD0A683CD634CC691C47D6EF8AF8CF9 /* Pods-ZZHNetwork_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 77579B72C991B3CA2B1F03C34906307A /* Pods-ZZHNetwork_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1464C972D656793318838984EADDAB64 /* ZZHNetworkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D7D7AD38E5D21A2634A713FF157E44 /* ZZHNetworkLog.m */; };
 		163B07BE98EAA270AF0A7AA82F84208E /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EE29478595C35D1DBF6CB2EE1BC11D5 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		221CAE26F1371DCF07820496757C0879 /* ZZHNetworkRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DAC9FB57DE6535A811285ECF7C2188AC /* ZZHNetworkRequest+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		232B2E8F32708EF2D85000B997FB69A2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C226F9AC0ECB3E8ACF768A2FA7B887 /* UIImageView+AFNetworking.m */; };
+		261F99CCFA0A30E57EE418008A3DA1F9 /* ZZHNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D0A44ED9EAAE101894841645E55CE2 /* ZZHNetworkRequest.m */; };
 		2657AB4F1D04803DABFE7DDF80C0EF7F /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DEE99F9E2A2A3C84E6EEECC8E4735F /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB5C7D99BD529942B2C81AB0CD8A600 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9C8613E3D05DC796E6070524CADD2D /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E7446308877A2FA6F48A7E545FFB1B1 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E6CBFBD0305264D5446D381452785B /* AFNetworkReachabilityManager.m */; };
 		38B57953D8705FA2092852071CD3A462 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2DD89AB0F81BDA8E59943C89131288 /* UIButton+AFNetworking.m */; };
+		3A252B0FE8C6C228AB53E250F01318B7 /* ZZHNetwork-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 005B55303A540905367CFB04423F6049 /* ZZHNetwork-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CA0C9185ED4469D427AA53B26E1B18F /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ACF33252734108CC44AF5E36AAD396 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D8852C9E94F0C2BAB4113284EF6EB15 /* ZZHNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C38F856F19D15F85B2D8CBF13321552 /* ZZHNetworkRequest.m */; };
 		3EB561D79F76C06AA538872D6302D35D /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3600A67B33B1FED00AE88B43D1244F6 /* AFNetworking-dummy.m */; };
-		3F5E1E8E74CBA5163086BC0E24462C06 /* ZZHNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 02840ED5D2EE77E2B4BC9788A1AA8A28 /* ZZHNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40426F061CD9B0B435C690CAFEA2BD00 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0587DEB0F48B0C1A8B2789B2897009D7 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		47BC6F05AD102761791673A1C6176F53 /* ZZHNetworkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF85B7447474A4B80FFCD97AA07ECC8 /* ZZHNetworkRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4052C3C7CB6B1A592D455E8434423E67 /* ZZHNetworkAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 39489EB8BC2C0A5CE12F64417C4A3A27 /* ZZHNetworkAgent.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4992259A954F174FA8BDB394DB1C8F93 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5D67C4903542379A45E2A9E3AD512A /* AFAutoPurgingImageCache.m */; };
 		4FCA4E8703DBF3D3FB7D5BA06229159D /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = D0730868BFD57958E896FE402D758ACB /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		558419C90B0169B1AE0AEEDFCE351662 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */; };
 		562AEB71D8C5F6CC57B92C1E32BA88E8 /* Pods-ZZHNetwork_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4985052CB52ECBD72DEF8FE5AB5011 /* Pods-ZZHNetwork_Example-dummy.m */; };
+		58F00C36F7752034E28E6F83BF303C15 /* ZZHNetwork-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987746C9976F3DF1EAD61EB88375055 /* ZZHNetwork-dummy.m */; };
 		5C480BB30B111C025C1D651B3549A915 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */; };
-		688EB3DEC4ACF7E1D5E1C350AA63B4A4 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBBD1AFA6C13D02481B51058453AE1D /* AFNetworking.framework */; };
+		695D2C71B7E38954F42E4FD3D0A76ECF /* ZZHNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B397503782021EA4854AE383FB67C7 /* ZZHNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D7DE59574E6E143199BA6F615451A0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */; };
 		6EE482EF823C5090378A600998A120F9 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B93D780D83E013B9CF065117B6ABA80 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		722EC0191A173ECB2121618467D32DF4 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C4036CC2F41439B5F3AA9EDFBA7AF998 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,153 +41,149 @@
 		828919193B61FC103B8846F54EF3131C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E2CD3A24ADC744F7D0585EBA2B334 /* AFURLResponseSerialization.m */; };
 		8CE480485EFF2F15B7A394C90CFF274A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C617FE811A91EA69182671BD494E324 /* AFHTTPSessionManager.m */; };
 		8D060BB549FA8C46C8A5E230C7E00CFE /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 26BEF3ED4DA9B8AAE20161D6B17D9800 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FE1CAA68E7A33CD8833385684A2D61A /* ZZHNetworkAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E982BB01AFC44668025BDC24FFFAF401 /* ZZHNetworkAgent.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		90324B59389EACF01FFDE6F2653707B4 /* ZZHNetworkDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 146F9F1D78CF23B57CBF07048561FE57 /* ZZHNetworkDefine.m */; };
-		930F58D5D03908724CBEE66419193A88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */; };
 		951B6669114E3C8D2E4961AFE2BB6647 /* WKWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 38082307C0751FB7512FD7B4DCE0F0DF /* WKWebView+AFNetworking.m */; };
-		96FB3B608D1AF1DF5B52C840B0C296D3 /* ZZHNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FC520CDCC5C7BE8947865307BC9978A9 /* ZZHNetworkUtil.m */; };
 		9D3A67B86C6A3A1339783953B3E833B9 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 929EE54BD0D1854BBCCA902B94780F8F /* AFNetworkActivityIndicatorManager.m */; };
+		9EE202DEE6B70B331B2651A5E64B0AD5 /* ZZHNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = BD746E1B08B5762564CFD56490A71330 /* ZZHNetworkAgent.m */; };
+		9F3C59821B99CE892FDD1E02FEF6EA30 /* ZZHNetworkLog.h in Headers */ = {isa = PBXBuildFile; fileRef = E509A27C54974B19E66D35E76DE5BB5D /* ZZHNetworkLog.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A6DE5A1B478949FE0444318D47C1A9CC /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 536C3EED4FA306EE3A3CC917259D28D2 /* AFSecurityPolicy.m */; };
 		A7E6C236F5C97B35484B553454B609B0 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 37D5F2CEB9B6937C268DB26EEF62978D /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB53DD17272FC01A004E08D8 /* ZZHNetworkRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AB53DD15272FC01A004E08D8 /* ZZHNetworkRequest+Private.h */; };
-		AB53DD18272FC01A004E08D8 /* ZZHNetworkRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */; };
-		AB6FBE1C2963CBD00030E8FE /* ZZHNetworkLog.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */; };
-		AB6FBE1D2963CBD00030E8FE /* ZZHNetworkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */; };
-		AC62B028EA6276D5585D08BB8F693876 /* ZZHNetwork-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA1FD723EE9C99A309E686C653F10AC /* ZZHNetwork-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE8E17A83AD619F62AE21EE13CA05FAE /* ZZHNetworkUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B78F1A9F6B8551AC647F45D49DB4D0FF /* ZZHNetworkUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AECFCA2598AABAEB044F6C4594F3222F /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 842F909230AAC675241531ECA8AEE4A5 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B03B5701C4BE1F1A53AAC396E1797E83 /* ZZHNetworkRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = A46F218B3322B0649CB38876DB447F3F /* ZZHNetworkRequest+Private.m */; };
 		B4658F8495B18BD4EB5D893CAFF3BBBC /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 00751FC3948A1A9F1FFAB649018002D8 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4F0E3434B28BA56C5029CEFFAF5406C /* ZZHNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EB36AB596A0A5249D9BB9DD1ACB14E29 /* ZZHNetworkUtil.m */; };
 		B83B1CA17424975882DA1066536E112B /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = B612BD4EE4F3E96EDA4A2251F15EA64A /* AFImageDownloader.m */; };
-		B95C6CD3F88A5F2C3D0A596B2B0D8236 /* ZZHNetworkUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 672B032AE290BC280BE8B1B4AA813844 /* ZZHNetworkUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BA93761CDB7F440D6867B4CF4CAA9B6D /* ZZHNetworkDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = EED32794C92C3EA1899A1D5810058F99 /* ZZHNetworkDefine.m */; };
 		BBFB85B525E1E77FCB19C84D911205D8 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56CB36A2B53EB55FCDCCDF7A19ACEC /* AFURLRequestSerialization.m */; };
 		C1302E7FE92A9E46A809CBA816F80CFD /* Pods-ZZHNetwork_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F492F259B9DD936BB71EEBA1B3A3CBE2 /* Pods-ZZHNetwork_Tests-dummy.m */; };
 		C9F701A2E6208D9E840E7A91287F21B9 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 648A80C6763B46492C7A3ACEB109BCE4 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D66716504D475B6377F7DD5C7C2BBCDE /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = E0C5F299CDD4219A0F5A63827D34D2E1 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8EB9F2CFC54AFE86B618DB528647311 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 184C15B942C47068EFDF9A418C8CF769 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E91A57306B3A5B3E9B22E6315554A4EB /* Pods-ZZHNetwork_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFBAE6FFBB703D7DAEF8F42E43C57CE9 /* Pods-ZZHNetwork_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED689FF30AD1831E3E5BE5CED0344FF4 /* ZZHNetworkDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B419C6EA46D7E6047E75B9BEE8B53A9 /* ZZHNetworkDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED9F647296507BDDA3D949487F18A8A5 /* ZZHNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 024961E4266628907FA662CA101193BD /* ZZHNetworkAgent.m */; };
-		F0E03FB136623415E22F019F77D9E385 /* ZZHNetwork-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40602C8758223FC8D39E0D3BB33097B7 /* ZZHNetwork-dummy.m */; };
+		ED7C2FCA2BF44A484961C59F870BFF77 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBBD1AFA6C13D02481B51058453AE1D /* AFNetworking.framework */; };
+		F105323FEA63A3E7CEB7418ACF937A93 /* ZZHNetworkDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = D7ED6C8120A7D4B7E901A6F6F2A3427F /* ZZHNetworkDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F191431A32F803DC12F12EF3B4D984BD /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = D655AE14CB5B94D33CDF7B47A889FF87 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4352388490E70C1CF187D93E390FB2A /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 23C5AC68C3D65B56B8E58FC9150BE018 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDA522B328C907FBF9B11C64C1A7C624 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D9CF71DA91C2758689E5548AFB791C /* UIActivityIndicatorView+AFNetworking.m */; };
+		FDA8CF311FF0746704EEFAA0D6860E43 /* ZZHNetworkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B86689F618760ACFFB04919DE1BDC9A7 /* ZZHNetworkRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0C61AC87B1C03FD1A28CEE0525E06723 /* PBXContainerItemProxy */ = {
+		221FFDC78311000E8DDDDED015095F44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
+			remoteInfo = AFNetworking;
+		};
+		3520E5EF2B47AC8FFE9B96FB5CC92C98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
+			remoteInfo = AFNetworking;
+		};
+		B9E638EEF2102D12BB964BBEE7A62DD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A65D5BAD7C14D87A5CF51D93C8341AA6;
 			remoteInfo = "Pods-ZZHNetwork_Example";
 		};
-		429C9EE708E0F86A2B3F189ED281905F /* PBXContainerItemProxy */ = {
+		BFF7F9D73E332FDB57E1ABF7934A1840 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 811C417968E7699FE0FE1E26DE6F1744;
 			remoteInfo = ZZHNetwork;
 		};
-		5022172B955DDFAFD82316023F458BE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
-			remoteInfo = AFNetworking;
-		};
-		9238384F4FF4D22DDC13825CF14A38E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
-			remoteInfo = AFNetworking;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0069CBCD0705A94C54047DDC079CD7B1 /* ZZHNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZZHNetwork.modulemap; sourceTree = "<group>"; };
+		005B55303A540905367CFB04423F6049 /* ZZHNetwork-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZZHNetwork-umbrella.h"; sourceTree = "<group>"; };
 		00751FC3948A1A9F1FFAB649018002D8 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
-		024961E4266628907FA662CA101193BD /* ZZHNetworkAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkAgent.m; sourceTree = "<group>"; };
-		02840ED5D2EE77E2B4BC9788A1AA8A28 /* ZZHNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetwork.h; sourceTree = "<group>"; };
-		03B1249F89AE4D9E99EF1D0698EC697A /* ZZHNetwork-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZZHNetwork-Info.plist"; sourceTree = "<group>"; };
 		0587DEB0F48B0C1A8B2789B2897009D7 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		06C226F9AC0ECB3E8ACF768A2FA7B887 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		087E14CFD01C52C8F320802FBE1C96AD /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
-		0C38F856F19D15F85B2D8CBF13321552 /* ZZHNetworkRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkRequest.m; sourceTree = "<group>"; };
-		146F9F1D78CF23B57CBF07048561FE57 /* ZZHNetworkDefine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkDefine.m; sourceTree = "<group>"; };
 		14DEE99F9E2A2A3C84E6EEECC8E4735F /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		184C15B942C47068EFDF9A418C8CF769 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
-		1AA1FD723EE9C99A309E686C653F10AC /* ZZHNetwork-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZZHNetwork-umbrella.h"; sourceTree = "<group>"; };
-		1FF85B7447474A4B80FFCD97AA07ECC8 /* ZZHNetworkRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkRequest.h; sourceTree = "<group>"; };
 		23C5AC68C3D65B56B8E58FC9150BE018 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCompatibilityMacros.h; path = AFNetworking/AFCompatibilityMacros.h; sourceTree = "<group>"; };
-		25AEB9517942DFF3689CA15B11F9E9DA /* Pods_ZZHNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZHNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25AEB9517942DFF3689CA15B11F9E9DA /* Pods_ZZHNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZZHNetwork_Tests.framework; path = "Pods-ZZHNetwork_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BEF3ED4DA9B8AAE20161D6B17D9800 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		2A3E2CD3A24ADC744F7D0585EBA2B334 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		2B419C6EA46D7E6047E75B9BEE8B53A9 /* ZZHNetworkDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkDefine.h; sourceTree = "<group>"; };
 		31FB51F7DEB07C68843C396B8C44B0FA /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		320AA6F10B9D9EFBA652ED2DA61C1872 /* Pods-ZZHNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZZHNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		37757F8A2AA55AC2FBBA82419EA59281 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
 		37D5F2CEB9B6937C268DB26EEF62978D /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		38082307C0751FB7512FD7B4DCE0F0DF /* WKWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView+AFNetworking.m"; path = "UIKit+AFNetworking/WKWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		39489EB8BC2C0A5CE12F64417C4A3A27 /* ZZHNetworkAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkAgent.h; sourceTree = "<group>"; };
+		3987746C9976F3DF1EAD61EB88375055 /* ZZHNetwork-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZZHNetwork-dummy.m"; sourceTree = "<group>"; };
 		3DC07265902CE85454DA4C435CD47B68 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		3F5AE6346998AB34264C9188E55A46E1 /* ZZHNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZZHNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		40602C8758223FC8D39E0D3BB33097B7 /* ZZHNetwork-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZZHNetwork-dummy.m"; sourceTree = "<group>"; };
+		3F5AE6346998AB34264C9188E55A46E1 /* ZZHNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZZHNetwork.framework; path = ZZHNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E8D514C49BE15E3CB2F07907B090A8 /* Pods-ZZHNetwork_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZZHNetwork_Example-Info.plist"; sourceTree = "<group>"; };
+		465926CA437DA27A16DF4D1DB715B6F8 /* ZZHNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZZHNetwork.modulemap; sourceTree = "<group>"; };
 		4B93D780D83E013B9CF065117B6ABA80 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		4EBBD1AFA6C13D02481B51058453AE1D /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E6CBFBD0305264D5446D381452785B /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		536C3EED4FA306EE3A3CC917259D28D2 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
-		5C2316C0A11DE98592254803C74D5E96 /* ZZHNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZHNetwork.debug.xcconfig; sourceTree = "<group>"; };
+		56D0A44ED9EAAE101894841645E55CE2 /* ZZHNetworkRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkRequest.m; sourceTree = "<group>"; };
+		5CE398F16DEDE95179F562E60CF90941 /* ZZHNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZZHNetwork-prefix.pch"; sourceTree = "<group>"; };
 		648A80C6763B46492C7A3ACEB109BCE4 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		659CD0DB2266D1D619EB5454D91FE42B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		672B032AE290BC280BE8B1B4AA813844 /* ZZHNetworkUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkUtil.h; sourceTree = "<group>"; };
 		75ACF33252734108CC44AF5E36AAD396 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		77579B72C991B3CA2B1F03C34906307A /* Pods-ZZHNetwork_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZZHNetwork_Tests-umbrella.h"; sourceTree = "<group>"; };
 		79895809DFABE2B8BA0C7A75DC781057 /* Pods-ZZHNetwork_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZZHNetwork_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		83D6B73DF114610CDD5952AC0D4D0E5A /* Pods_ZZHNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZHNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D6B73DF114610CDD5952AC0D4D0E5A /* Pods_ZZHNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZZHNetwork_Example.framework; path = "Pods-ZZHNetwork_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		842F909230AAC675241531ECA8AEE4A5 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		853BD4D235F7BE293B36F34B3B31570C /* Pods-ZZHNetwork_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZZHNetwork_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		870D2F2DD2E2C2611E3A97F0A2E04D7C /* ZZHNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZHNetwork.debug.xcconfig; sourceTree = "<group>"; };
 		89E909443A20B13103B8D2B89E899297 /* AFNetworking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFNetworking-Info.plist"; sourceTree = "<group>"; };
 		8B9E383A054E7E1C274AF007FD183F8D /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		8C1AC5306286E7424322BC57C42051AD /* ZZHNetwork-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZZHNetwork-Info.plist"; sourceTree = "<group>"; };
 		8E2DD89AB0F81BDA8E59943C89131288 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		8EE29478595C35D1DBF6CB2EE1BC11D5 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		90372D6190A3672FD012D30EDED6BFE6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9054095EF65CCB00F9F92BC2D4AB7808 /* ZZHNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZHNetwork.release.xcconfig; sourceTree = "<group>"; };
 		929EE54BD0D1854BBCCA902B94780F8F /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		94811C1A800C2AB7D4C7CDDA89A066E0 /* Pods-ZZHNetwork_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZZHNetwork_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9C617FE811A91EA69182671BD494E324 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A46F218B3322B0649CB38876DB447F3F /* ZZHNetworkRequest+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZZHNetworkRequest+Private.m"; sourceTree = "<group>"; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B0AF0DE2BD9E6FABC0D47C0DA60320 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
 		A60BD276953FDFD9EF7716AC41900658 /* Pods-ZZHNetwork_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZZHNetwork_Example-frameworks.sh"; sourceTree = "<group>"; };
 		AB4985052CB52ECBD72DEF8FE5AB5011 /* Pods-ZZHNetwork_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZZHNetwork_Example-dummy.m"; sourceTree = "<group>"; };
-		AB53DD15272FC01A004E08D8 /* ZZHNetworkRequest+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZHNetworkRequest+Private.h"; sourceTree = "<group>"; };
-		AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZZHNetworkRequest+Private.m"; sourceTree = "<group>"; };
-		AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkLog.h; sourceTree = "<group>"; };
-		AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkLog.m; sourceTree = "<group>"; };
-		AD17D9274B40A5FC6C56B0620750ADEC /* ZZHNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZHNetwork.release.xcconfig; sourceTree = "<group>"; };
 		B4D9CF71DA91C2758689E5548AFB791C /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		B612BD4EE4F3E96EDA4A2251F15EA64A /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
-		BF6E2486D46DFAE2CFEA03170C036719 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B78F1A9F6B8551AC647F45D49DB4D0FF /* ZZHNetworkUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkUtil.h; sourceTree = "<group>"; };
+		B86689F618760ACFFB04919DE1BDC9A7 /* ZZHNetworkRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkRequest.h; sourceTree = "<group>"; };
+		B8A4DABC2737A1E92D2DA0F22039176A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		BD746E1B08B5762564CFD56490A71330 /* ZZHNetworkAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkAgent.m; sourceTree = "<group>"; };
 		BF9C8613E3D05DC796E6070524CADD2D /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		C3600A67B33B1FED00AE88B43D1244F6 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		C36BA0F5F6E8FDE45D96BD97EF5DBBD0 /* ZZHNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZZHNetwork-prefix.pch"; sourceTree = "<group>"; };
 		C3A16F3B111E5E02AAE3EB97CA7DE947 /* Pods-ZZHNetwork_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZZHNetwork_Example.modulemap"; sourceTree = "<group>"; };
 		C4036CC2F41439B5F3AA9EDFBA7AF998 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
-		C49C0FFA997CB9C355A509AE506DDCED /* ZZHNetwork.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = ZZHNetwork.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C49EDCA8E1D560D9A8E95A3740E13BC3 /* Pods-ZZHNetwork_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZZHNetwork_Tests-Info.plist"; sourceTree = "<group>"; };
 		C4D0696932AADA56B60C55CB70985DEF /* Pods-ZZHNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZZHNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C9B397503782021EA4854AE383FB67C7 /* ZZHNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetwork.h; sourceTree = "<group>"; };
 		CB2D8C6F89E11A531AD7544C065F4DDC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		CBFDF83F2C855F29352862D71100C1B2 /* WKWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView+AFNetworking.h"; path = "UIKit+AFNetworking/WKWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D0730868BFD57958E896FE402D758ACB /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		D080D19E1D0F01C83440C47437E7C4F4 /* Pods-ZZHNetwork_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZZHNetwork_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		D0CA806C2965246F19A201AAF82E51FB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D5D7D7AD38E5D21A2634A713FF157E44 /* ZZHNetworkLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkLog.m; sourceTree = "<group>"; };
 		D655AE14CB5B94D33CDF7B47A889FF87 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		D7ED6C8120A7D4B7E901A6F6F2A3427F /* ZZHNetworkDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkDefine.h; sourceTree = "<group>"; };
+		DAC9FB57DE6535A811285ECF7C2188AC /* ZZHNetworkRequest+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZZHNetworkRequest+Private.h"; sourceTree = "<group>"; };
 		DEFD78009B7FE8B48CBCE367D36A15BB /* Pods-ZZHNetwork_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZZHNetwork_Tests.modulemap"; sourceTree = "<group>"; };
 		E0C5F299CDD4219A0F5A63827D34D2E1 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		E36B38DF2A3DC6A9254634C4EB8DF0CB /* AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.release.xcconfig; sourceTree = "<group>"; };
-		E982BB01AFC44668025BDC24FFFAF401 /* ZZHNetworkAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkAgent.h; sourceTree = "<group>"; };
+		E509A27C54974B19E66D35E76DE5BB5D /* ZZHNetworkLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZZHNetworkLog.h; sourceTree = "<group>"; };
+		EB36AB596A0A5249D9BB9DD1ACB14E29 /* ZZHNetworkUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkUtil.m; sourceTree = "<group>"; };
 		EDFC9427E04BC5A2B484854F5791CD85 /* Pods-ZZHNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZZHNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		EED32794C92C3EA1899A1D5810058F99 /* ZZHNetworkDefine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkDefine.m; sourceTree = "<group>"; };
 		EF6405BB08004B705B0F61407554C7A6 /* Pods-ZZHNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZZHNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
+		EF84E1A40B5BA5A21C63BCF25468C958 /* ZZHNetwork.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZZHNetwork.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F492F259B9DD936BB71EEBA1B3A3CBE2 /* Pods-ZZHNetwork_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZZHNetwork_Tests-dummy.m"; sourceTree = "<group>"; };
-		FC520CDCC5C7BE8947865307BC9978A9 /* ZZHNetworkUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZZHNetworkUtil.m; sourceTree = "<group>"; };
 		FC56CB36A2B53EB55FCDCCDF7A19ACEC /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		FC5D67C4903542379A45E2A9E3AD512A /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
 		FFBAE6FFBB703D7DAEF8F42E43C57CE9 /* Pods-ZZHNetwork_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZZHNetwork_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -206,15 +206,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		89D6CD1C4AA08C9C1D642F9438C1FEE9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				688EB3DEC4ACF7E1D5E1C350AA63B4A4 /* AFNetworking.framework in Frameworks */,
-				930F58D5D03908724CBEE66419193A88 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8F9BCCCF510F65077210B8D9944565EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,24 +214,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92ECA875A206A7AA590B90F685EC9681 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7C2FCA2BF44A484961C59F870BFF77 /* AFNetworking.framework in Frameworks */,
+				0450C3432D0C81AB171F66D3AFF279FE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04D9D018727D4CEAD43B7D0155825586 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0069CBCD0705A94C54047DDC079CD7B1 /* ZZHNetwork.modulemap */,
-				40602C8758223FC8D39E0D3BB33097B7 /* ZZHNetwork-dummy.m */,
-				03B1249F89AE4D9E99EF1D0698EC697A /* ZZHNetwork-Info.plist */,
-				C36BA0F5F6E8FDE45D96BD97EF5DBBD0 /* ZZHNetwork-prefix.pch */,
-				1AA1FD723EE9C99A309E686C653F10AC /* ZZHNetwork-umbrella.h */,
-				5C2316C0A11DE98592254803C74D5E96 /* ZZHNetwork.debug.xcconfig */,
-				AD17D9274B40A5FC6C56B0620750ADEC /* ZZHNetwork.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ZZHNetwork";
-			sourceTree = "<group>";
-		};
 		09410C77D811DDFF2218266C7A4D123E /* Security */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +238,7 @@
 		16161BE3D09B23B0770E0B3C72C6CA68 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4EB91E64B259A55797B2D34A88E3D82F /* ZZHNetwork */,
+				72EB7E8425B0AA1D1F70AB4F5443E6A6 /* ZZHNetwork */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -284,18 +269,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4EB91E64B259A55797B2D34A88E3D82F /* ZZHNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				7EE2E29B643D1B620C141E6C5AEFD80B /* Header */,
-				F819048B75875297C814E2AEE4220B0A /* Pod */,
-				5EE871E390041DA3366C7656E66DB935 /* Private */,
-				04D9D018727D4CEAD43B7D0155825586 /* Support Files */,
-			);
-			name = ZZHNetwork;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		5999E42392ACC64B35B383DB5863DE08 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,33 +277,31 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5EE871E390041DA3366C7656E66DB935 /* Private */ = {
+		6DA531162DB595B9C891F9782BED90A4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E982BB01AFC44668025BDC24FFFAF401 /* ZZHNetworkAgent.h */,
-				024961E4266628907FA662CA101193BD /* ZZHNetworkAgent.m */,
-				AB53DD15272FC01A004E08D8 /* ZZHNetworkRequest+Private.h */,
-				AB53DD16272FC01A004E08D8 /* ZZHNetworkRequest+Private.m */,
-				672B032AE290BC280BE8B1B4AA813844 /* ZZHNetworkUtil.h */,
-				FC520CDCC5C7BE8947865307BC9978A9 /* ZZHNetworkUtil.m */,
-				AB6FBE1A2963CBD00030E8FE /* ZZHNetworkLog.h */,
-				AB6FBE1B2963CBD00030E8FE /* ZZHNetworkLog.m */,
+				465926CA437DA27A16DF4D1DB715B6F8 /* ZZHNetwork.modulemap */,
+				3987746C9976F3DF1EAD61EB88375055 /* ZZHNetwork-dummy.m */,
+				8C1AC5306286E7424322BC57C42051AD /* ZZHNetwork-Info.plist */,
+				5CE398F16DEDE95179F562E60CF90941 /* ZZHNetwork-prefix.pch */,
+				005B55303A540905367CFB04423F6049 /* ZZHNetwork-umbrella.h */,
+				870D2F2DD2E2C2611E3A97F0A2E04D7C /* ZZHNetwork.debug.xcconfig */,
+				9054095EF65CCB00F9F92BC2D4AB7808 /* ZZHNetwork.release.xcconfig */,
 			);
-			name = Private;
-			path = ZZHNetwork/Private;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ZZHNetwork";
 			sourceTree = "<group>";
 		};
-		7EE2E29B643D1B620C141E6C5AEFD80B /* Header */ = {
+		72EB7E8425B0AA1D1F70AB4F5443E6A6 /* ZZHNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				02840ED5D2EE77E2B4BC9788A1AA8A28 /* ZZHNetwork.h */,
-				2B419C6EA46D7E6047E75B9BEE8B53A9 /* ZZHNetworkDefine.h */,
-				146F9F1D78CF23B57CBF07048561FE57 /* ZZHNetworkDefine.m */,
-				1FF85B7447474A4B80FFCD97AA07ECC8 /* ZZHNetworkRequest.h */,
-				0C38F856F19D15F85B2D8CBF13321552 /* ZZHNetworkRequest.m */,
+				A35BA6C6ADE2049B1C5A6153CA0FB990 /* Header */,
+				D60D5F6432421E4C9F1DAA1F16C0D17C /* Pod */,
+				B6EDE7CE1630AB725F035ABB5DD64821 /* Private */,
+				6DA531162DB595B9C891F9782BED90A4 /* Support Files */,
 			);
-			name = Header;
-			path = ZZHNetwork/Header;
+			name = ZZHNetwork;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		7F46BF8E2678846B924B501ED1749133 /* Targets Support Files */ = {
@@ -363,6 +334,19 @@
 			name = NSURLSession;
 			sourceTree = "<group>";
 		};
+		A35BA6C6ADE2049B1C5A6153CA0FB990 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				C9B397503782021EA4854AE383FB67C7 /* ZZHNetwork.h */,
+				D7ED6C8120A7D4B7E901A6F6F2A3427F /* ZZHNetworkDefine.h */,
+				EED32794C92C3EA1899A1D5810058F99 /* ZZHNetworkDefine.m */,
+				B86689F618760ACFFB04919DE1BDC9A7 /* ZZHNetworkRequest.h */,
+				56D0A44ED9EAAE101894841645E55CE2 /* ZZHNetworkRequest.m */,
+			);
+			name = Header;
+			path = ZZHNetwork/Header;
+			sourceTree = "<group>";
+		};
 		A8B6A39706FB3546FEF649C94CA8A96A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +362,22 @@
 				F7B0C907F31D1F1746138475CA9C1023 /* AFNetworking */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B6EDE7CE1630AB725F035ABB5DD64821 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				39489EB8BC2C0A5CE12F64417C4A3A27 /* ZZHNetworkAgent.h */,
+				BD746E1B08B5762564CFD56490A71330 /* ZZHNetworkAgent.m */,
+				E509A27C54974B19E66D35E76DE5BB5D /* ZZHNetworkLog.h */,
+				D5D7D7AD38E5D21A2634A713FF157E44 /* ZZHNetworkLog.m */,
+				DAC9FB57DE6535A811285ECF7C2188AC /* ZZHNetworkRequest+Private.h */,
+				A46F218B3322B0649CB38876DB447F3F /* ZZHNetworkRequest+Private.m */,
+				B78F1A9F6B8551AC647F45D49DB4D0FF /* ZZHNetworkUtil.h */,
+				EB36AB596A0A5249D9BB9DD1ACB14E29 /* ZZHNetworkUtil.m */,
+			);
+			name = Private;
+			path = ZZHNetwork/Private;
 			sourceTree = "<group>";
 		};
 		C12D34B55CD5B595B95A438003E50CA3 /* Pods-ZZHNetwork_Tests */ = {
@@ -462,6 +462,16 @@
 			name = Serialization;
 			sourceTree = "<group>";
 		};
+		D60D5F6432421E4C9F1DAA1F16C0D17C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B8A4DABC2737A1E92D2DA0F22039176A /* LICENSE */,
+				90372D6190A3672FD012D30EDED6BFE6 /* README.md */,
+				EF84E1A40B5BA5A21C63BCF25468C958 /* ZZHNetwork.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		F7B0C907F31D1F1746138475CA9C1023 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,37 +483,13 @@
 				1CD2E58BFA94F98B90F9942547BB7005 /* Support Files */,
 				CC3001599D15ADC8E41FD8F3ABAFC81B /* UIKit */,
 			);
+			name = AFNetworking;
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		F819048B75875297C814E2AEE4220B0A /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				BF6E2486D46DFAE2CFEA03170C036719 /* LICENSE */,
-				D0CA806C2965246F19A201AAF82E51FB /* README.md */,
-				C49C0FFA997CB9C355A509AE506DDCED /* ZZHNetwork.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		48DED7BD9F51F8EED629CC1E0A6C9802 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F5E1E8E74CBA5163086BC0E24462C06 /* ZZHNetwork.h in Headers */,
-				AC62B028EA6276D5585D08BB8F693876 /* ZZHNetwork-umbrella.h in Headers */,
-				8FE1CAA68E7A33CD8833385684A2D61A /* ZZHNetworkAgent.h in Headers */,
-				AB6FBE1C2963CBD00030E8FE /* ZZHNetworkLog.h in Headers */,
-				ED689FF30AD1831E3E5BE5CED0344FF4 /* ZZHNetworkDefine.h in Headers */,
-				47BC6F05AD102761791673A1C6176F53 /* ZZHNetworkRequest.h in Headers */,
-				AB53DD17272FC01A004E08D8 /* ZZHNetworkRequest+Private.h in Headers */,
-				B95C6CD3F88A5F2C3D0A596B2B0D8236 /* ZZHNetworkUtil.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		59B5B25848EC0A466D38314849642C8B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +503,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91A57306B3A5B3E9B22E6315554A4EB /* Pods-ZZHNetwork_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EEC1C04604FD5E3F2CD54A363DC26A7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				695D2C71B7E38954F42E4FD3D0A76ECF /* ZZHNetwork.h in Headers */,
+				3A252B0FE8C6C228AB53E250F01318B7 /* ZZHNetwork-umbrella.h in Headers */,
+				4052C3C7CB6B1A592D455E8434423E67 /* ZZHNetworkAgent.h in Headers */,
+				F105323FEA63A3E7CEB7418ACF937A93 /* ZZHNetworkDefine.h in Headers */,
+				9F3C59821B99CE892FDD1E02FEF6EA30 /* ZZHNetworkLog.h in Headers */,
+				FDA8CF311FF0746704EEFAA0D6860E43 /* ZZHNetworkRequest.h in Headers */,
+				221CAE26F1371DCF07820496757C0879 /* ZZHNetworkRequest+Private.h in Headers */,
+				AE8E17A83AD619F62AE21EE13CA05FAE /* ZZHNetworkUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +580,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				3A996A57397E5884F86C4AFB2D28EAEE /* PBXTargetDependency */,
+				6C7CBFAC2E5B76E5F0ADEC98E56EFD84 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZZHNetwork_Tests";
 			productName = "Pods-ZZHNetwork_Tests";
@@ -588,17 +589,17 @@
 		};
 		811C417968E7699FE0FE1E26DE6F1744 /* ZZHNetwork */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AC51C436607DD9D0C94B54447371D2C /* Build configuration list for PBXNativeTarget "ZZHNetwork" */;
+			buildConfigurationList = 7CFECFE3B6CD07B5EF0B518D91C092FB /* Build configuration list for PBXNativeTarget "ZZHNetwork" */;
 			buildPhases = (
-				48DED7BD9F51F8EED629CC1E0A6C9802 /* Headers */,
-				CA481EC7B77DC76A13A3B4592DAFA802 /* Sources */,
-				89D6CD1C4AA08C9C1D642F9438C1FEE9 /* Frameworks */,
-				807880F00E5C342BB82DD68711900F1C /* Resources */,
+				7EEC1C04604FD5E3F2CD54A363DC26A7 /* Headers */,
+				AD580D01E8C9CD153ED029FC48CEEA6F /* Sources */,
+				92ECA875A206A7AA590B90F685EC9681 /* Frameworks */,
+				6A475F5D59C2ADC630487510C9F56460 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C7EE8A06DCE2EBCAD8B123EB9F56279F /* PBXTargetDependency */,
+				8813CD561907DEA71671E6164245C529 /* PBXTargetDependency */,
 			);
 			name = ZZHNetwork;
 			productName = ZZHNetwork;
@@ -617,8 +618,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				137AF4BC65236D6261C4868BCD1475D2 /* PBXTargetDependency */,
-				C7AA1A2CB8A2C2E7AA14816CEA4C8ED7 /* PBXTargetDependency */,
+				0098C1A57050B5B82AE1A39BFABFD6CD /* PBXTargetDependency */,
+				FFA45884A3F38D09E24661C139C716D9 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZZHNetwork_Example";
 			productName = "Pods-ZZHNetwork_Example";
@@ -632,7 +633,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -670,14 +671,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7D79D3BD2ED49E6A8FF5BFB55AB07AF9 /* Resources */ = {
+		6A475F5D59C2ADC630487510C9F56460 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		807880F00E5C342BB82DD68711900F1C /* Resources */ = {
+		7D79D3BD2ED49E6A8FF5BFB55AB07AF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -726,50 +727,80 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA481EC7B77DC76A13A3B4592DAFA802 /* Sources */ = {
+		AD580D01E8C9CD153ED029FC48CEEA6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E03FB136623415E22F019F77D9E385 /* ZZHNetwork-dummy.m in Sources */,
-				ED9F647296507BDDA3D949487F18A8A5 /* ZZHNetworkAgent.m in Sources */,
-				90324B59389EACF01FFDE6F2653707B4 /* ZZHNetworkDefine.m in Sources */,
-				AB6FBE1D2963CBD00030E8FE /* ZZHNetworkLog.m in Sources */,
-				3D8852C9E94F0C2BAB4113284EF6EB15 /* ZZHNetworkRequest.m in Sources */,
-				AB53DD18272FC01A004E08D8 /* ZZHNetworkRequest+Private.m in Sources */,
-				96FB3B608D1AF1DF5B52C840B0C296D3 /* ZZHNetworkUtil.m in Sources */,
+				58F00C36F7752034E28E6F83BF303C15 /* ZZHNetwork-dummy.m in Sources */,
+				9EE202DEE6B70B331B2651A5E64B0AD5 /* ZZHNetworkAgent.m in Sources */,
+				BA93761CDB7F440D6867B4CF4CAA9B6D /* ZZHNetworkDefine.m in Sources */,
+				1464C972D656793318838984EADDAB64 /* ZZHNetworkLog.m in Sources */,
+				261F99CCFA0A30E57EE418008A3DA1F9 /* ZZHNetworkRequest.m in Sources */,
+				B03B5701C4BE1F1A53AAC396E1797E83 /* ZZHNetworkRequest+Private.m in Sources */,
+				B4F0E3434B28BA56C5029CEFFAF5406C /* ZZHNetworkUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		137AF4BC65236D6261C4868BCD1475D2 /* PBXTargetDependency */ = {
+		0098C1A57050B5B82AE1A39BFABFD6CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = 5022172B955DDFAFD82316023F458BE8 /* PBXContainerItemProxy */;
+			targetProxy = 3520E5EF2B47AC8FFE9B96FB5CC92C98 /* PBXContainerItemProxy */;
 		};
-		3A996A57397E5884F86C4AFB2D28EAEE /* PBXTargetDependency */ = {
+		6C7CBFAC2E5B76E5F0ADEC98E56EFD84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ZZHNetwork_Example";
 			target = A65D5BAD7C14D87A5CF51D93C8341AA6 /* Pods-ZZHNetwork_Example */;
-			targetProxy = 0C61AC87B1C03FD1A28CEE0525E06723 /* PBXContainerItemProxy */;
+			targetProxy = B9E638EEF2102D12BB964BBEE7A62DD4 /* PBXContainerItemProxy */;
 		};
-		C7AA1A2CB8A2C2E7AA14816CEA4C8ED7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZZHNetwork;
-			target = 811C417968E7699FE0FE1E26DE6F1744 /* ZZHNetwork */;
-			targetProxy = 429C9EE708E0F86A2B3F189ED281905F /* PBXContainerItemProxy */;
-		};
-		C7EE8A06DCE2EBCAD8B123EB9F56279F /* PBXTargetDependency */ = {
+		8813CD561907DEA71671E6164245C529 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = 9238384F4FF4D22DDC13825CF14A38E3 /* PBXContainerItemProxy */;
+			targetProxy = 221FFDC78311000E8DDDDED015095F44 /* PBXContainerItemProxy */;
+		};
+		FFA45884A3F38D09E24661C139C716D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZZHNetwork;
+			target = 811C417968E7699FE0FE1E26DE6F1744 /* ZZHNetwork */;
+			targetProxy = BFF7F9D73E332FDB57E1ABF7934A1840 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03A65E907FC306DEC2B92E57A1A5ECC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 870D2F2DD2E2C2611E3A97F0A2E04D7C /* ZZHNetwork.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ZZHNetwork/ZZHNetwork-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork.modulemap";
+				PRODUCT_MODULE_NAME = ZZHNetwork;
+				PRODUCT_NAME = ZZHNetwork;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		0C902209175D85304A5115B511928021 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37757F8A2AA55AC2FBBA82419EA59281 /* AFNetworking.debug.xcconfig */;
@@ -962,67 +993,6 @@
 			};
 			name = Debug;
 		};
-		8FAF3A4077411AE23B87AB91D9694141 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C2316C0A11DE98592254803C74D5E96 /* ZZHNetwork.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ZZHNetwork/ZZHNetwork-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork.modulemap";
-				PRODUCT_MODULE_NAME = ZZHNetwork;
-				PRODUCT_NAME = ZZHNetwork;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9209266EB0EB856B978D3DE825C0C292 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD17D9274B40A5FC6C56B0620750ADEC /* ZZHNetwork.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ZZHNetwork/ZZHNetwork-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork.modulemap";
-				PRODUCT_MODULE_NAME = ZZHNetwork;
-				PRODUCT_NAME = ZZHNetwork;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		BA4ED2F8D6BA1A73EE3142AAAACCBD15 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 320AA6F10B9D9EFBA652ED2DA61C1872 /* Pods-ZZHNetwork_Tests.release.xcconfig */;
@@ -1111,7 +1081,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -1149,6 +1120,37 @@
 			};
 			name = Debug;
 		};
+		DA6CB5FF0D88A26B06536D5277EFF259 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9054095EF65CCB00F9F92BC2D4AB7808 /* ZZHNetwork.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ZZHNetwork/ZZHNetwork-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZZHNetwork/ZZHNetwork.modulemap";
+				PRODUCT_MODULE_NAME = ZZHNetwork;
+				PRODUCT_NAME = ZZHNetwork;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1170,20 +1172,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4AC51C436607DD9D0C94B54447371D2C /* Build configuration list for PBXNativeTarget "ZZHNetwork" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8FAF3A4077411AE23B87AB91D9694141 /* Debug */,
-				9209266EB0EB856B978D3DE825C0C292 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		6B10451CA10988123DD728BC1404FE8E /* Build configuration list for PBXNativeTarget "Pods-ZZHNetwork_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82EB78AAEF838FE652BEFF8AE637E75A /* Debug */,
 				BA4ED2F8D6BA1A73EE3142AAAACCBD15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CFECFE3B6CD07B5EF0B518D91C092FB /* Build configuration list for PBXNativeTarget "ZZHNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03A65E907FC306DEC2B92E57A1A5ECC0 /* Debug */,
+				DA6CB5FF0D88A26B06536D5277EFF259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
