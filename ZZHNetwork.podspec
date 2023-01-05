@@ -35,7 +35,15 @@ Pod::Spec.new do |s|
   # 公开的头文件
   s.public_header_files = 'ZZHNetwork/Header/*.h'
   
-  
+  # 解决 pod spec lint 验证不通过
+  s.user_target_xcconfig = {
+      'GENERATE_INFOPLIST_FILE' => 'YES'
+  }
+  s.pod_target_xcconfig = {
+      'GENERATE_INFOPLIST_FILE' => 'YES'
+  }
+
+
   # 使用到的资源文件
   # s.resource_bundles = {
   #   'ZZHNetwork' => ['ZZHNetwork/Assets/*.png']
@@ -46,4 +54,5 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   # 使用三方库
   s.dependency 'AFNetworking', '~> 4.0'
+  
 end
