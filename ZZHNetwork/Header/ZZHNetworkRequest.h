@@ -10,11 +10,26 @@
 #import "ZZHNetworkDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 /**
  * ZZHNetworkRequest对象绑定唯一的网络请求, 可以随时修改ZZHNetworkRequest属性不会对原有的网络请求配置和回调产生影响.
  * 请在主线程使用这个类.
  */
 @interface ZZHNetworkRequest : NSObject
+
+#pragma mark - 可读信息
+
+///  网络任务正在执行
+@property (nonatomic, readonly) BOOL isExecuting;
+/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkProgress progressBlock;
+/// 网络回调完成的 block.   在 main queue 执行. (在任何情况下都会触发调用)
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkVoidHandler beforeCallBackHandler;
+/// 网络请求成功的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkSuccessHandler successHandler;
+/// 网络请求失败的回调block.   在 main queue 执行
+@property (nonatomic, copy, nullable, readonly) ZZHNetworkFailHandler failHandler;
+
 
 #pragma mark - 网络设置(子类继承进行设置)
 
@@ -22,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) ZZHRequestStrategy requestStrategy;
 
 /// 网络请求回调代理.
-@property (nonatomic, weak, nullable) id <ZZHNetworkRequestDeledate> delegate;
+@property (nonatomic, weak, nullable) id <ZZHNetworkRequestDelegate> delegate;
 
 /// 请求类型.  默认 ZZHNetworkRequestTypePost
 @property (nonatomic, assign) ZZHNetworkRequestType requestType;
@@ -70,19 +85,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 打印等级. 默认 ZZHNetworkLogLevelDefault
 @property (nonatomic, assign) ZZHNetworkLogLevel logLevel;
-
-#pragma mark - 可读信息
-
-///  网络任务正在执行
-@property (nonatomic, readonly, getter=isExecuting) BOOL executing;
-/// 网络请求进度. 注意: 这个回调不是在主线程, 且 GET 和 POST 才有效.
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkProgress progressBlock;
-/// 网络回调完成的 block.   在 main queue 执行. (在任何情况下都会触发调用)
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkVoidHandler beforeCallBackHandler;
-/// 网络请求成功的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkSuccessHandler successHandler;
-/// 网络请求失败的回调block.   在 main queue 执行
-@property (nonatomic, copy, nullable, readonly) ZZHNetworkFailHandler failHandler;
 
 #pragma mark - public Action
 

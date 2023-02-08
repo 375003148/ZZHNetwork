@@ -13,15 +13,10 @@
 #import "ZZHNetworkRequest+Private.h"
 #import "ZZHNetworkLog.h"
 #import <AFNetworking/AFNetworking.h>
+#import "ZZHNetworkResponse.h"
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)
-
-typedef enum : NSUInteger {
-    ZZHNetworkResponseTypeSuccess,
-    ZZHNetworkResponseTypeFailure,
-    ZZHNetworkResponseTypeCancel,
-} ZZHNetworkResponseType;
 
 @interface ZZHNetworkAgent () {
     pthread_mutex_t _lock;
@@ -86,19 +81,20 @@ typedef enum : NSUInteger {
     NSError * __autoreleasing requestError = nil;
     NSURLSessionTask *sessionTask = [self taskForRequest:request error:&requestError];
     request.sessionTask = sessionTask;
+    request.executing = YES;
     
     // 打印日志
     [ZZHNetworkLog logRequestStart:request];
     
-    if (requestError) {
+    // 创建任务失败, 直接作为失败处理
+    if (requestError || !sessionTask) {
         //创建task失败
         request.sessionTask = nil;
+        request.executing = NO;
         [self handleCallBack:request responseObject:nil error:requestError responseType:ZZHNetworkResponseTypeFailure];
         return;
     }
 
-    NSAssert(sessionTask != nil, @"requestTask should not be nil");
-    
     // 设置task优先级
     if ([sessionTask respondsToSelector:@selector(priority)]) {
         switch (request.requestPriority) {
@@ -126,7 +122,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)cancelRequest:(nullable ZZHNetworkRequest *)request {
-    if (!request.sessionTask) {
+    if (!request.executing) {
         return;
     }
     
@@ -146,8 +142,6 @@ typedef enum : NSUInteger {
 
     // 处理回调
     [self handleCallBack:request responseObject:nil error:nil responseType:ZZHNetworkResponseTypeCancel];
-    // 清除 request 记录
-    [self clearNetworkRequest:request];
 }
 
 - (void)cancelAllRequests {
@@ -178,7 +172,7 @@ typedef enum : NSUInteger {
 
     //这里很重要 !!!
     // 网络请求取消时, 不进行任何回调操作
-    if (!request.sessionTask) {
+    if (!request.executing) {
         return;
     }
     
@@ -227,13 +221,11 @@ typedef enum : NSUInteger {
     //主线程进行回调 和 清除数据
     dispatch_main_async_safe(^{
         // 如果已经取消了, 直接return
-        if (!request.sessionTask) {
+        if (!request.executing) {
             return;
         }
         // 处理回调
         [self handleCallBack:request responseObject:responseObject error:requestError responseType:type];
-        // 清除存储记录
-        [self clearNetworkRequest:request];
     });
 }
 
@@ -243,8 +235,22 @@ typedef enum : NSUInteger {
                  error:(NSError *)error
           responseType:(ZZHNetworkResponseType)type {
     
+    // 首先把状态变更一下, 防止下面的回调中使用request时状态混乱
+    request.executing = NO;
+    
     // 打印网络请求原始返回数据
     [ZZHNetworkLog logRequestResponse:request responseObject:responseObject error:error];
+    
+    // 预处理返回结果
+    ZZHNetworkResponse *response;
+    if ([request.preprocessor respondsToSelector:@selector(preproccessResponseObject:error:)] && type != ZZHNetworkResponseTypeCancel) {
+        response = [request.preprocessor preproccessResponseObject:responseObject error:error];
+    } else {
+        response = [[ZZHNetworkResponse alloc] init];
+        response.responseObject = responseObject;
+        response.error = error;
+        response.type = type;
+    }
     
     // 回调 - beforeCallBackHandler
     if (request.beforeCallBackHandler) {
@@ -258,37 +264,13 @@ typedef enum : NSUInteger {
         }
     }
     
-    // 预处理返回结果
-    if ([request.preprocessor respondsToSelector:@selector(preproccessResponseObject:error:)] && type != ZZHNetworkResponseTypeCancel) {
-        id result = [request.preprocessor preproccessResponseObject:responseObject error:error];
-        if ([result isKindOfClass:[NSNumber class]]) {
-            // 结果通知上层处理了, 直接 return
-            
-            // 打印信息
-            [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 网络结果通知上层处理, 终止回调 <<<<<<<<<<"];
-            return;
-        }
-        else if ([result isKindOfClass:[NSError class]]) {
-            // 失败
-            type = ZZHNetworkResponseTypeFailure;
-            error = result;
-        } else {
-            // 成功
-            type = ZZHNetworkResponseTypeSuccess;
-            responseObject = result;
-        }
-    }
-    
-    switch (type) {
+    switch (response.type) {
         case ZZHNetworkResponseTypeSuccess: {
             // 1.成功回调
-            [ZZHNetworkLog logSuccess:request responseObject:responseObject];
+            [ZZHNetworkLog logSuccess:request responseObject:response.responseObject];
             
             if (request.successHandler) {
-                request.successHandler(responseObject);
-            }
-            if (request.delegate && [request.delegate respondsToSelector:@selector(requestDidSucceed:)]) {
-                [request.delegate requestDidSucceed:responseObject];
+                request.successHandler(response.responseObject);
             }
         }
             break;
@@ -297,22 +279,21 @@ typedef enum : NSUInteger {
             [ZZHNetworkLog logFailure:request error:error];
             
             if (request.failHandler) {
-                request.failHandler(error);
-            }
-            if (request.delegate && [request.delegate respondsToSelector:@selector(requestDidFailed:)]) {
-                [request.delegate requestDidFailed:error];
+                request.failHandler(response.error);
             }
         }
             break;
         case ZZHNetworkResponseTypeCancel: {
-            // 3.取消
-            if (request.delegate && [request.delegate respondsToSelector:@selector(requestDidCancelled)]) {
-                [request.delegate requestDidCancelled];
-            }
+            // 3.取消. 啥都不做
         }
             break;
         default:
             break;
+    }
+    
+    // 代理回调
+    if (request.delegate && [request.delegate respondsToSelector:@selector(request:didCallCallBack:)]) {
+        [request.delegate request:request didCallCallBack:response];
     }
     
     // 拦截器 - requestAfterCallBack
@@ -321,6 +302,10 @@ typedef enum : NSUInteger {
             [interceptor requestAfterCallBack];
         }
     }
+    
+    
+    // 所有操作都完成之后, 清除 request 记录 和 block的引用
+    [self clearNetworkRequest:request];
 }
 
 #pragma mark - 创建网络任务 sessionTask
@@ -517,16 +502,19 @@ typedef enum : NSUInteger {
     }
 }
 
-/// 结束网络请求必须调用此方法, 清除掉 sessionTask 和 记录字典中的 request
+/// 网络请求最后必须调用此方法, 清除掉 sessionTask 和 记录字典中的 request
 - (void)clearNetworkRequest:(ZZHNetworkRequest *)request {
-    request.sessionTask = nil;
+    // 删除sessionTask相关记录
+    if (request.sessionTask) {
+        Lock();
+        [self.requestRecordDic removeObjectForKey:@(request.sessionTask.taskIdentifier)];
+        Unlock();
+        
+        request.sessionTask = nil;
+    }
     
     // 删除所有的回调block
     [request clearAllBlocks];
-    
-    Lock();
-    [self.requestRecordDic removeObjectForKey:@(request.sessionTask.taskIdentifier)];
-    Unlock();
 }
 
 @end

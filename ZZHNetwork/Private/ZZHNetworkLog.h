@@ -30,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///  打印信息
 + (void)logRequest:(nonnull ZZHNetworkRequest *)request mes:(NSString *)mes, ...;
 
+
+///  并发请求打印
++ (void)logConcurrentRequestMes:(NSString *)mes, ...;
+
 @end
 
 NS_ASSUME_NONNULL_END

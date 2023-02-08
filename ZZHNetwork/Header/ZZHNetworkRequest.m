@@ -87,7 +87,7 @@
 }
 
 - (BOOL)isExecuting {
-    return self.sessionTask != nil;
+    return self.executing;
 }
 
 // 删除所有回调 block

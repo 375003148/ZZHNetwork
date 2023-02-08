@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ZZHNetworkResponse;
+@class ZZHNetworkRequest;
+
 /// 请求策略
 typedef NS_ENUM(NSInteger, ZZHRequestStrategy) {
     ZZHRequestStrategyByOld = 0, // 多次调用时只执行初始的请求 
@@ -39,8 +42,8 @@ typedef NS_ENUM(NSUInteger, ZZHNetworkRequestSerializerType) {
     ZZHNetworkRequestSerializerTypeJSON,
 };
 
-typedef NS_ENUM(NSUInteger, ZZHNetworkLogLevel) {
-    ZZHNetworkLogLevelOff = -4,     // 关闭打印
+typedef NS_ENUM(NSInteger, ZZHNetworkLogLevel) {
+    ZZHNetworkLogLevelOff = -4,      // 关闭打印
     ZZHNetworkLogLevelDefault = 0,   // 打印网络请求最终数据
     ZZHNetworkLogLevelDetail = 4,    // 打印所有详细数据
 };
@@ -67,24 +70,17 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
 #pragma mark - 网络请求回调代理
 
-@protocol ZZHNetworkRequestDeledate <NSObject>
-
+@protocol ZZHNetworkRequestDelegate <NSObject>
 @optional
 
-/// 网络请求成功的回调
-- (void)requestDidSucceed:(nullable id)responseObject;
-
-/// 网络请求失败的回调
-- (void)requestDidFailed:(nullable NSError *)error;
-
-/// 网络请求取消的回调
-- (void)requestDidCancelled;
+// 网络请求代理的回调 (包括成功, 失败, 取消)
+- (void)request:(ZZHNetworkRequest *)request didCallCallBack:(nonnull ZZHNetworkResponse *)response;
 
 @end
 
 #pragma mark - 预处理代理
-@protocol ZZHNetworkPreproccess <NSObject>
 
+@protocol ZZHNetworkPreproccess <NSObject>
 @optional
 
 /// 预处理参数
@@ -93,8 +89,7 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 
 
 /// 预处理请求结果 (注意此方法是在子线程)
-/// @return 返回最终的数据格式. 如果返回NSNumber, 表示事件已经分发, 不执行回调. 如果为NSError则执行失败回调, 其它情况执行成功回调
-- (nullable id)preproccessResponseObject:(nullable id)responseObject error:(nullable NSError *)error;
+- (ZZHNetworkResponse *)preproccessResponseObject:(nullable id)responseObject error:(nullable NSError *)error;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "ZZHViewController.h"
 #import "ZZHGetRequest.h"
+#import "ZZHNetworkConcurrentRequest.h"
 
 @interface ZZHViewController ()
 
@@ -97,7 +98,25 @@
 }
 
 - (void)requestForPostUploadFile {
+    ZZHNetworkConcurrentRequest *request = [[ZZHNetworkConcurrentRequest alloc] init];
     
+    [request addRequest:[[ZZHGetRequest alloc] init] successHandler:^(id  _Nullable responseObject) {
+        NSLog(@"--->request成功1");
+    } failureHandler:^(NSError * _Nullable error) {
+        NSLog(@"--->request失败1");
+    }];
+    
+    [request addRequest:[[ZZHGetRequest alloc] init] successHandler:^(id  _Nullable responseObject) {
+        NSLog(@"--->request成功2");
+    } failureHandler:^(NSError * _Nullable error) {
+        NSLog(@"--->request失败2");
+    }];
+    
+    [request startOnCompletion:^{
+        NSLog(@"--->request全部完成");
+    }];
+    
+//    [request cancel];
 }
 
 @end

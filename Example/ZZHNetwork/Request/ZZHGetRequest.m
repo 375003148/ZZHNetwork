@@ -25,7 +25,7 @@
 #pragma mark - Override
 
 - (ZZHNetworkLogLevel)logLevel {
-    return ZZHNetworkLogLevelDetail;
+    return ZZHNetworkLogLevelOff;
 }
 
 //请求类型
@@ -44,8 +44,8 @@
 
 - (id)requestParameters {
     return @{
-        @"username": _username,
-        @"password": _password
+        @"username": _username?:@"",
+        @"password": _password?:@""
     };
 }
 

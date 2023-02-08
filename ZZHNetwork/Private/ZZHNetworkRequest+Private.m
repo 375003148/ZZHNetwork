@@ -12,16 +12,6 @@
 
 @implementation ZZHNetworkRequest (Private)
 
-static void const *ZZHNetworkSessionTaskKey = &ZZHNetworkSessionTaskKey;
-
-- (void)setSessionTask:(NSURLSessionTask *)sessionTask {
-    objc_setAssociatedObject(self, ZZHNetworkSessionTaskKey, sessionTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSURLSessionTask *)sessionTask {
-    return objc_getAssociatedObject(self, ZZHNetworkSessionTaskKey);
-}
-
 // 获取最终URL
 - (NSString *)getFinalURL {
     NSString *baseURLString = self.baseURLString?:@"";
@@ -89,6 +79,28 @@ static void const *ZZHNetworkSessionTaskKey = &ZZHNetworkSessionTaskKey;
     } else {
         return cacheFolder;
     }
+}
+
+#pragma mark - set && get
+
+static void const *ZZHNetworkSessionTaskKey = &ZZHNetworkSessionTaskKey;
+static void const *ZZHNetworkExecutingKey = &ZZHNetworkExecutingKey;
+
+- (void)setSessionTask:(NSURLSessionTask *)sessionTask {
+    objc_setAssociatedObject(self, ZZHNetworkSessionTaskKey, sessionTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSURLSessionTask *)sessionTask {
+    return objc_getAssociatedObject(self, ZZHNetworkSessionTaskKey);
+}
+
+- (void)setExecuting:(BOOL)executing {
+    objc_setAssociatedObject(self, ZZHNetworkExecutingKey, @(executing), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)executing {
+    NSNumber *result = objc_getAssociatedObject(self, ZZHNetworkExecutingKey);
+    return  [result boolValue];
 }
 
 @end

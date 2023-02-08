@@ -77,6 +77,21 @@
 #endif
 }
 
+///  并发请求打印
++ (void)logConcurrentRequestMes:(NSString *)mes, ... {
+#if DEBUG
+    va_list arglist;
+    va_start(arglist, mes);
+    NSString *outStr = [[NSString alloc] initWithFormat:mes arguments:arglist];
+    va_end(arglist);
+    
+    fprintf(stderr,"[ZZHNetwork][并发] %s\n", [outStr UTF8String]);
+    fprintf(stderr,"\n");
+#else
+    return;
+#endif
+}
+
 #pragma mark - Private
 
 + (void)_log:(NSUInteger)requestID mes:(NSString *)FORMAT, ... {

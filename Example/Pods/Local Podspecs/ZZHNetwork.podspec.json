@@ -23,6 +23,13 @@
     "ZZHNetwork/Private/*.{h,m}"
   ],
   "public_header_files": "ZZHNetwork/Header/*.h",
+  "user_target_xcconfig": {
+    "GENERATE_INFOPLIST_FILE": "YES"
+  },
+  "pod_target_xcconfig": {
+    "GENERATE_INFOPLIST_FILE": "YES"
+  },
+  "frameworks": "Foundation",
   "dependencies": {
     "AFNetworking": [
       "~> 4.0"
