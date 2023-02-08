@@ -115,8 +115,7 @@
             currentModel.failure(response.error);
         }
     } else {
-        //取消的情况
-        [self cancel];
+        //取消. 啥都不做
     }
     
     // 如果所有的请求都完成了, 则调用并发请求的回调, 然后重置设置

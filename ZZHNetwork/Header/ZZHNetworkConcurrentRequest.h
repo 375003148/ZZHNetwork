@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     failureHandler:(nullable ZZHNetworkFailHandler)failureHandler;
 
 
-/// 并发请求全部完成 (添加的所有请求均成功,失败或者取消了) .  注意: 当里面任何一个request取消时, 整个并发请求都会取消掉.
+/// 并发请求全部完成 (添加的所有请求均成功,失败或者取消了) .  
 /// - Parameter completion: 完成的回调block
 - (void)startOnCompletion:(void (^)(void))completion;
 
