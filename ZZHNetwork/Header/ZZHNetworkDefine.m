@@ -8,4 +8,6 @@
 
 #import "ZZHNetworkDefine.h"
 
+@implementation ZZHNetworkDefine
 
+@end

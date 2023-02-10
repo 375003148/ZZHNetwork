@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "ZZHNetworkResponse.h"
-#import "ZZHNetworkRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -106,6 +105,10 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 - (void)requestBeforeCallBack;
 /// 回调之前. 包括成功和失败和取消
 - (void)requestAfterCallBack;
+@end
+
+
+@interface ZZHNetworkDefine : NSObject
 
 @end
 
