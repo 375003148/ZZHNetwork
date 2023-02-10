@@ -7,8 +7,8 @@
 //
 
 #import "ZZHViewController.h"
+#import <ZZHNetwork.h>
 #import "ZZHGetRequest.h"
-#import "ZZHNetworkConcurrentRequest.h"
 
 @interface ZZHViewController ()
 

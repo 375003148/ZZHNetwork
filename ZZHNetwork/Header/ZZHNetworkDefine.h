@@ -87,13 +87,13 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 /// @param parameters 原始的参数字典
 - (nullable id)preproccessParameter:(nullable id)parameters;
 
-
 /// 预处理请求结果 (注意此方法是在子线程)
 - (ZZHNetworkResponse *)preproccessResponseObject:(nullable id)responseObject error:(nullable NSError *)error;
 
 @end
 
 #pragma mark - 网络请求拦截代理
+
 @protocol ZZHNetworkInterceptor <NSObject>
 
 @optional
@@ -104,12 +104,9 @@ typedef void(^ZZHConstructingBlock)(id<AFMultipartFormData> _Nonnull formData);
 - (void)requestBeforeCallBack;
 /// 回调之前. 包括成功和失败和取消
 - (void)requestAfterCallBack;
-@end
-
-
-@interface ZZHNetworkDefine : NSObject
 
 @end
+
 
 NS_ASSUME_NONNULL_END
 
