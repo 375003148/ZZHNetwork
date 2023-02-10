@@ -36,31 +36,26 @@
     if (request.logLevel > 0) {
         [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求原始返回数据 <<<<<<<<<<"];
         [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"responseObject -> %@", responseObject];
-        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"nerror -> %@", error];
-        [ZZHNetworkLog _logSpaceLine];
-    }
-#else
-#endif
-}
-
-/// 打印网络请求成功的最终数据
-+ (void)logSuccess:(nonnull ZZHNetworkRequest *)request responseObject:(nullable id)responseObject {
-#if DEBUG
-    if (request.logLevel >= 0) {
-        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求成功 <<<<<<<<<<"];
-        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"responseObject -> %@", responseObject];
-        [ZZHNetworkLog _logSpaceLine];
-    }
-#else
-#endif
-}
-
-/// 打印网络请求失败的最终数据
-+ (void)logFailure:(nonnull ZZHNetworkRequest *)request error:(nullable NSError *)error {
-#if DEBUG
-    if (request.logLevel >= 0) {
-        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求失败 <<<<<<<<<<"];
         [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"error -> %@", error];
+        [ZZHNetworkLog _logSpaceLine];
+    }
+#else
+#endif
+}
+
++ (void)logFinalResult:(nonnull ZZHNetworkRequest *)request response:(ZZHNetworkResponse *)response {
+#if DEBUG
+    if (request.logLevel >= 0) {
+        if (response.type == ZZHNetworkResponseTypeSuccess) {
+            [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求成功了 <<<<<<<<<<"];
+        } else if (response.type == ZZHNetworkResponseTypeFailure) {
+            [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求失败了 <<<<<<<<<<"];
+        } else {
+            [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@">>>>>>>>>> 网络请求取消了 <<<<<<<<<<"];
+        }
+        
+        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"responseObject -> %@", response.responseObject];
+        [ZZHNetworkLog _log:request.sessionTask.taskIdentifier mes:@"error -> %@", response.error];
         [ZZHNetworkLog _logSpaceLine];
     }
 #else

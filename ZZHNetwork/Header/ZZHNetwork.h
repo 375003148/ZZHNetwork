@@ -17,5 +17,7 @@ FOUNDATION_EXPORT const unsigned char ZZHNetworkVersionString[];
 
 #import <ZZHNetwork/ZZHNetworkDefine.h>
 #import <ZZHNetwork/ZZHNetworkRequest.h>
+#import <ZZHNetwork/ZZHNetworkConcurrentRequest.h>
+#import <ZZHNetwork/ZZHNetworkResponse.h>
 
 

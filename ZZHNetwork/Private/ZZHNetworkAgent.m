@@ -127,7 +127,7 @@
     }
     
     // 打印信息
-    [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 网络请求取消 <<<<<<<<<<"];
+    [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 开始取消网络请求 <<<<<<<<<<"];
     
     //取消网络任务
     if (request.resumableDownloadPath && [request resumeDataPath]) {
@@ -252,6 +252,9 @@
         response.type = type;
     }
     
+    // 打印网络请求最终数据
+    [ZZHNetworkLog logFinalResult:request response:response];
+    
     // 回调 - beforeCallBackHandler
     if (request.beforeCallBackHandler) {
         request.beforeCallBackHandler();
@@ -267,8 +270,6 @@
     switch (response.type) {
         case ZZHNetworkResponseTypeSuccess: {
             // 1.成功回调
-            [ZZHNetworkLog logSuccess:request responseObject:response.responseObject];
-            
             if (request.successHandler) {
                 request.successHandler(response.responseObject);
             }
@@ -276,8 +277,6 @@
             break;
         case ZZHNetworkResponseTypeFailure: {
             // 2.失败
-            [ZZHNetworkLog logFailure:request error:error];
-            
             if (request.failHandler) {
                 request.failHandler(response.error);
             }

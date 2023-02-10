@@ -22,10 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
             responseObject:(nullable id)responseObject
                      error:(nullable NSError *)error;
 
-/// 打印网络请求成功的最终数据
-+ (void)logSuccess:(nonnull ZZHNetworkRequest *)request responseObject:(nullable id)responseObject;
-/// 打印网络请求失败的最终数据
-+ (void)logFailure:(nonnull ZZHNetworkRequest *)request error:(nullable NSError *)error;
+//  打印网络请求最终数据
++ (void)logFinalResult:(nonnull ZZHNetworkRequest *)request response:(ZZHNetworkResponse *)response;
 
 ///  打印信息
 + (void)logRequest:(nonnull ZZHNetworkRequest *)request mes:(NSString *)mes, ...;
