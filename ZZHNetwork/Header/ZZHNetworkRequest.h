@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ZZHNetworkDefine.h"
+#import "ZZHNetworkResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
