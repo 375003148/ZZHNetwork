@@ -23,8 +23,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		8920EAEE90B434C41DA2F2A2 /* Pods_ZZHNetwork_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62CF54B2E5BF34263EFF773 /* Pods_ZZHNetwork_Tests.framework */; };
-		AB8C5D7B2693F852004A1ECB /* DemoServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C5D7A2693F852004A1ECB /* DemoServiceRequest.m */; };
-		AB8C5DF8269C31D3004A1ECB /* TFServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C5DF7269C31D3004A1ECB /* TFServiceRequest.m */; };
+		AB9F9C872C182B8C0023E3BB /* ZZHPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9C862C182B8C0023E3BB /* ZZHPostRequest.m */; };
 		ABC66117247D093D0054EAB8 /* ZZHGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC66116247D093D0054EAB8 /* ZZHGetRequest.m */; };
 		F49A8E73CCB47DDA3756BE3D /* Pods_ZZHNetwork_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4C718B3CF3AE8D4EEF0DA7 /* Pods_ZZHNetwork_Example.framework */; };
 /* End PBXBuildFile section */
@@ -66,10 +65,8 @@
 		8B00855FE6F3FE9FACB14B90 /* ZZHNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZZHNetwork.podspec; path = ../ZZHNetwork.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A4C718B3CF3AE8D4EEF0DA7 /* Pods_ZZHNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZHNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA304A9BD268531711A18C2B /* Pods-ZZHNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZHNetwork_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZHNetwork_Tests/Pods-ZZHNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		AB8C5D792693F852004A1ECB /* DemoServiceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoServiceRequest.h; sourceTree = "<group>"; };
-		AB8C5D7A2693F852004A1ECB /* DemoServiceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoServiceRequest.m; sourceTree = "<group>"; };
-		AB8C5DF6269C31D3004A1ECB /* TFServiceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFServiceRequest.h; sourceTree = "<group>"; };
-		AB8C5DF7269C31D3004A1ECB /* TFServiceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFServiceRequest.m; sourceTree = "<group>"; };
+		AB9F9C852C182B8C0023E3BB /* ZZHPostRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHPostRequest.h; sourceTree = "<group>"; };
+		AB9F9C862C182B8C0023E3BB /* ZZHPostRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHPostRequest.m; sourceTree = "<group>"; };
 		ABC66115247D093D0054EAB8 /* ZZHGetRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHGetRequest.h; sourceTree = "<group>"; };
 		ABC66116247D093D0054EAB8 /* ZZHGetRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHGetRequest.m; sourceTree = "<group>"; };
 		C5E87716CA3D84A6901CAE37 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 		6003F593195388D20070C39A /* Example for ZZHNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				AB8C5D762693F7D9004A1ECB /* Service */,
 				6003F59C195388D20070C39A /* ZZHAppDelegate.h */,
 				6003F59D195388D20070C39A /* ZZHAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -196,22 +192,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		AB8C5D762693F7D9004A1ECB /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				AB8C5D792693F852004A1ECB /* DemoServiceRequest.h */,
-				AB8C5D7A2693F852004A1ECB /* DemoServiceRequest.m */,
-				AB8C5DF6269C31D3004A1ECB /* TFServiceRequest.h */,
-				AB8C5DF7269C31D3004A1ECB /* TFServiceRequest.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		ABC66114247D08F90054EAB8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
 				ABC66115247D093D0054EAB8 /* ZZHGetRequest.h */,
 				ABC66116247D093D0054EAB8 /* ZZHGetRequest.m */,
+				AB9F9C852C182B8C0023E3BB /* ZZHPostRequest.h */,
+				AB9F9C862C182B8C0023E3BB /* ZZHPostRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -402,10 +389,9 @@
 			files = (
 				6003F59E195388D20070C39A /* ZZHAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* ZZHViewController.m in Sources */,
+				AB9F9C872C182B8C0023E3BB /* ZZHPostRequest.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				AB8C5D7B2693F852004A1ECB /* DemoServiceRequest.m in Sources */,
 				ABC66117247D093D0054EAB8 /* ZZHGetRequest.m in Sources */,
-				AB8C5DF8269C31D3004A1ECB /* TFServiceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

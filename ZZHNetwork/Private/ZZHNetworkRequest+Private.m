@@ -10,6 +10,14 @@
 #import "ZZHNetworkLog.h"
 #import <objc/runtime.h>
 
+@interface ZZHNetworkRequest ()
+
+/// 最终的请求参数
+@property (nonatomic, strong, readwrite) NSDictionary *finalParameters;
+
+
+@end
+
 @implementation ZZHNetworkRequest (Private)
 
 // 获取最终URL
@@ -33,12 +41,13 @@
 }
 
 // 获取最终参数
-- (id)getFinalParameters {
+- (id)saveFinalParameters {
     // 参数预处理
     id finalParameters = self.requestParameters;
     if ([self.preprocessor respondsToSelector:@selector(preproccessParameter:)]) {
         finalParameters = [self.preprocessor preproccessParameter:self.requestParameters];
     }
+    self.finalParameters = finalParameters;
     return finalParameters;
 }
 
@@ -85,6 +94,15 @@
 
 static void const *ZZHNetworkSessionTaskKey = &ZZHNetworkSessionTaskKey;
 static void const *ZZHNetworkExecutingKey = &ZZHNetworkExecutingKey;
+static void const *ZZHNetworkFinalPramsKey = &ZZHNetworkFinalPramsKey;
+
+- (void)setFinalParameters:(NSDictionary *)finalParameters {
+    objc_setAssociatedObject(self, ZZHNetworkFinalPramsKey, finalParameters, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSDictionary *)finalParameters {
+    return objc_getAssociatedObject(self, ZZHNetworkFinalPramsKey);
+}
 
 - (void)setSessionTask:(NSURLSessionTask *)sessionTask {
     objc_setAssociatedObject(self, ZZHNetworkSessionTaskKey, sessionTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

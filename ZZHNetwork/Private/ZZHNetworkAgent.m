@@ -67,6 +67,7 @@
 
 
 #pragma mark - Public Method
+
 - (void)startRequest:(nonnull ZZHNetworkRequest *)request; {
     NSParameterAssert(request != nil);
    
@@ -127,7 +128,7 @@
     }
     
     // 打印信息
-    [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 开始取消网络请求 <<<<<<<<<<"];
+    [ZZHNetworkLog logRequest:request mes:@">>>>>>>>>> 网络请求取消 <<<<<<<<<<"];
     
     //取消网络任务
     if (request.resumableDownloadPath && [request resumeDataPath]) {
@@ -252,9 +253,6 @@
         response.type = type;
     }
     
-    // 打印网络请求最终数据
-    [ZZHNetworkLog logFinalResult:request response:response];
-    
     // 回调 - beforeCallBackHandler
     if (request.beforeCallBackHandler) {
         request.beforeCallBackHandler();
@@ -270,6 +268,8 @@
     switch (response.type) {
         case ZZHNetworkResponseTypeSuccess: {
             // 1.成功回调
+            [ZZHNetworkLog logSuccess:request responseObject:response.responseObject];
+            
             if (request.successHandler) {
                 request.successHandler(response.responseObject);
             }
@@ -277,6 +277,8 @@
             break;
         case ZZHNetworkResponseTypeFailure: {
             // 2.失败
+            [ZZHNetworkLog logFailure:request error:error];
+            
             if (request.failHandler) {
                 request.failHandler(response.error);
             }
@@ -360,7 +362,7 @@
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     NSMutableURLRequest *URLRequest = nil;
     NSString *finalURL = [request getFinalURL];
-    id finalParameters = [request getFinalParameters];
+    id finalParameters = [request saveFinalParameters];
     
     if (request.constructingBlock) {
         URLRequest = [requestSerializer multipartFormRequestWithMethod:methodName URLString:finalURL parameters:(NSDictionary *)finalParameters constructingBodyWithBlock:request.constructingBlock error:error];
@@ -383,7 +385,7 @@
     NSString *downloadPath = request.resumableDownloadPath;
     
     NSString *finalURL = [request getFinalURL];
-    id finalParameters = [request getFinalParameters];
+    id finalParameters = [request saveFinalParameters];
     NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:finalURL parameters:finalParameters error:error];
 
     /// 处理下载路径格式, downloadTargetPath 为最终的下载地址
@@ -515,5 +517,6 @@
     // 删除所有的回调block
     [request clearAllBlocks];
 }
+
 
 @end

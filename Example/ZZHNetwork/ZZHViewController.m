@@ -9,10 +9,13 @@
 #import "ZZHViewController.h"
 #import <ZZHNetwork.h>
 #import "ZZHGetRequest.h"
+#import "ZZHPostRequest.h"
 
 @interface ZZHViewController ()
 
 @property (nonatomic, strong) NSArray *dataArr;
+
+@property (nonatomic, strong) ZZHPostRequest *postRequest;
 
 @end
 
@@ -94,7 +97,11 @@
 }
 
 - (void)requestForPost {
-    
+    [self.postRequest startOnSuccess:^(id  _Nullable responseObject) {
+        //
+    } onFailure:^(NSError * _Nullable error) {
+        //
+    }];
 }
 
 - (void)requestForPostUploadFile {
@@ -117,6 +124,15 @@
     }];
     
 //    [request cancel];
+}
+
+#pragma mark -
+
+- (ZZHPostRequest *)postRequest {
+    if (!_postRequest) {
+        _postRequest = [[ZZHPostRequest alloc] init];
+    }
+    return _postRequest;
 }
 
 @end

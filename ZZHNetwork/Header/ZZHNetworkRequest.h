@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * ZZHNetworkRequest对象绑定唯一的网络请求, 可以随时修改ZZHNetworkRequest属性不会对原有的网络请求配置和回调产生影响.
  * 请在主线程使用这个类.
+ * 注意: 不要在回调中使用本request对象再次start reqeust . 暂不支持
  */
 @interface ZZHNetworkRequest : NSObject
 
